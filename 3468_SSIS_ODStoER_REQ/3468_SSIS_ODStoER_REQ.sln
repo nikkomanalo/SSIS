@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32510.428
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{C9674DCB-5085-4A16-B785-4C70DD1589BD}") = "3468_SSIS_ODStoER_REQ", "3468_SSIS_ODStoER_REQ\3468_SSIS_ODStoER_REQ.dtproj", "{292324E8-04D1-47A8-BFB5-F03CE172B8BD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Development|Default = Development|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{292324E8-04D1-47A8-BFB5-F03CE172B8BD}.Development|Default.ActiveCfg = Development
+		{292324E8-04D1-47A8-BFB5-F03CE172B8BD}.Development|Default.Build.0 = Development
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E88D2D24-7478-4053-BC5A-FDB2F452FA3D}
+	EndGlobalSection
+EndGlobal

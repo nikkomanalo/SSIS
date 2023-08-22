@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "3468_EmployeeReferral", "3468_EmployeeReferral\3468_EmployeeReferral.dtproj", "{6A9274BB-33A8-41EA-B91B-2E68DC818E64}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 2
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://tfs2010.accenture.com/tfs/bang6tpcprod
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = 3468_EmployeeReferral\\3468_EmployeeReferral.dtproj
+		SccProjectName1 = 3468_EmployeeReferral
+		SccLocalPath1 = 3468_EmployeeReferral
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Development|Default = Development|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6A9274BB-33A8-41EA-B91B-2E68DC818E64}.Development|Default.ActiveCfg = Development
+		{6A9274BB-33A8-41EA-B91B-2E68DC818E64}.Development|Default.Build.0 = Development
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

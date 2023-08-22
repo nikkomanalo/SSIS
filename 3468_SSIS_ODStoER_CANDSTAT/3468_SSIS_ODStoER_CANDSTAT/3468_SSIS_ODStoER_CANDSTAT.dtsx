@@ -1,0 +1,2405 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="11/30/2017 1:58:40 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="CIOS-51412XM-LX"
+  DTS:CreatorName="DIR\john.del.t.manrique"
+  DTS:DTSID="{A55D0CDE-7ADF-40F9-B688-104BCB38DEAB}"
+  DTS:EnableConfig="True"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.170"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="3468_SSIS_ODStoER_CANDSTAT"
+  DTS:PackageType="5"
+  DTS:VersionBuild="229"
+  DTS:VersionGUID="{17CB6849-E26E-4806-A013-3F4862BB0534}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[2761_EnterpriseODS]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{2A57E25D-C0BE-4863-8079-75A475F52C71}"
+      DTS:ObjectName="2761_EnterpriseODS">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Retain="True"
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=3468-mi-dev-employeerefe-01.76c13d078b29.database.windows.net;Uid=3468_SSIS;Initial Catalog=2761_EnterpriseODS;Provider=SQLNCLI11.1;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Pwd"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAvFILFCrNfUyadrn3rzMxEgAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAACoIuZ86QD820dSfbV7ufO0AAAAAASAAACgAAAAEAAAAIvpSUVKDn9/yZfmz30LlgUgAAAAllgU8pAlabfLFuIXlngxn0Y8EtY5HbwBQLM61yJkCQ8UAAAAfxDWD/gDIb4xPldbqiS4uh0xuTk</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[3468_EmploRefer]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{C7F408FC-6710-49A2-A882-31A6D521F2CC}"
+      DTS:ObjectName="3468_EmploRefer">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Retain="True"
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=3468-mi-dev-employeerefe-01.76c13d078b29.database.windows.net;Uid=3468_SSIS;Initial Catalog=3468_EmployeeReferrals;Provider=SQLNCLI11.1;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Pwd"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAvFILFCrNfUyadrn3rzMxEgAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAADpZTVXWEgn/z7Us4JuOu0ZAAAAAASAAACgAAAAEAAAAAGFL4+N3WBaoQr3Zxv/TUQgAAAA2dhoJbZnWMiu2UMouL4j7qXvTzEtgnE4+P1EIQ8lpx4UAAAABvp8IS8ozRhK8brSxdMrrcLWyFI</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[AdminDB]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{C466292E-6F2C-4E08-B4FF-EC34723AFBD3}"
+      DTS:ObjectName="AdminDB">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Retain="True"
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=3468-mi-dev-employeerefe-01.76c13d078b29.database.windows.net;Uid=3468_SSIS;Initial Catalog=2751_EnterRepor_SSISAdmin;Provider=SQLNCLI11.1;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Pwd"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAvFILFCrNfUyadrn3rzMxEgAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAABEi4RrE/QGxYaIhLt5ELJkAAAAAASAAACgAAAAEAAAAPEazQNVI8qFd1MG8sjeGDcgAAAAhFn5hiMOtmtT8rCGe+nagXMwtAMyQmYx3Mnm108P6igUAAAAgol7QmJQW20eK+8VpprSfCamMaI</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SMTPServer]"
+      DTS:CreationName="SMTP"
+      DTS:DTSID="{584799FE-AF94-4627-B726-08A3575DAD1F}"
+      DTS:ObjectName="SMTPServer">
+      <DTS:ObjectData>
+        <SmtpConnectionManager
+          ConnectionString="SmtpServer=AMRINT.SMTP.ACCENTURE.COM;UseWindowsAuthentication=True;EnableSsl=False;"
+          ConnectByProxy="False" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Configurations>
+    <DTS:Configuration
+      DTS:ConfigurationString="&quot;AdminDB&quot;;&quot;[admin].[PackageConfiguration]&quot;;&quot;3468_SSIS_ODStoER&quot;;"
+      DTS:ConfigurationType="7"
+      DTS:CreationName=""
+      DTS:DTSID="{773261CF-2576-4041-85EE-6A529F46539C}"
+      DTS:ObjectName="3468_SSIS_ODStoER" />
+    <DTS:Configuration
+      DTS:ConfigurationString="SSISAdminConnStr"
+      DTS:ConfigurationType="2"
+      DTS:ConfigurationVariable="\Package.Connections[AdminDB].Properties[ConnectionString]"
+      DTS:CreationName=""
+      DTS:DTSID="{C0C2517E-62ED-458A-ACAA-8F3D074304A1}"
+      DTS:ObjectName="SSISAdminConnStr" />
+  </DTS:Configurations>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{AB1513EC-10F4-46C8-943C-A5FD984D28E7}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="DateExecution">
+      <DTS:VariableValue
+        DTS:DataType="7">1/1/1900</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{268B6A9C-FED7-4116-A48F-0D6155BAB7E4}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="dtCandidateLastProcDate">
+      <DTS:VariableValue
+        DTS:DataType="7">1/1/1900</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{F3B7307B-DF85-496A-8530-C3266CBF97EA}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="dtCandidateStatusLastProcDate">
+      <DTS:VariableValue
+        DTS:DataType="7">1/1/1900</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{104BEADE-C41B-41D0-B6C1-1CB112CC1E4F}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="dtCurrent">
+      <DTS:VariableValue
+        DTS:DataType="7">1/1/1900</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{CFECF8C6-AAEA-4655-AB5A-0B4910E17D11}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="dtLatestProgDate">
+      <DTS:VariableValue
+        DTS:DataType="7">1/1/1900</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{98C28811-9EA2-4B1C-9D49-8BB73F95F9CF}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="dtReferrerLastProcDate">
+      <DTS:VariableValue
+        DTS:DataType="7">1/1/1900</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{B0F626EA-9767-48D8-83AD-B35EAE2517DB}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="dtRequisitionLastProcDate">
+      <DTS:VariableValue
+        DTS:DataType="7">1/1/1900</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{3583C107-9684-4D47-B6A0-1FC2434352FA}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="dtUpdateReferralCount">
+      <DTS:VariableValue
+        DTS:DataType="7">1/1/1900</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{C4F5A439-253D-4346-BBFD-4179CCB3DA03}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="dtUpdateReferralTree">
+      <DTS:VariableValue
+        DTS:DataType="7">1/1/1900</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{2DDB4E18-EB1D-4E6F-99F8-D8305CC15B89}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="dtUpdateReferralTreeJSON">
+      <DTS:VariableValue
+        DTS:DataType="7">1/1/1900</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{6A59BA1A-616B-4ED1-B0B8-CC302ACE9A7E}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="objCandidate">
+      <DTS:VariableValue
+        DTS:DataSubType="ManagedSerializable"
+        DTS:DataType="13">
+        <SOAP-ENV:Envelope xmlns:clr="http://schemas.microsoft.com/soap/encoding/clr/1.0" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+          <SOAP-ENV:Body>
+            <xsd:anyType
+              id="ref-1"></xsd:anyType>
+          </SOAP-ENV:Body>
+        </SOAP-ENV:Envelope>
+      </DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{B21E8912-DBDD-481B-944C-78EAE7608ACB}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="RequisitionRetryCount">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{C59FF631-0FE2-451B-8320-1ED13E313CE2}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="RequisitionRetryIntervalInSecond">
+      <DTS:VariableValue
+        DTS:DataType="3">3</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{0291B5C3-48CE-4DCD-9EA8-EF23CB3391DC}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="RequisitionRetryMaxCount">
+      <DTS:VariableValue
+        DTS:DataType="3">5</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{BB2818E1-FAF0-4DED-92EA-C8850095AADC}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="strGetProcessingDateTable">
+      <DTS:VariableValue
+        DTS:DataType="8">gbl_TableName</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{EEE58D0E-67F3-480E-B775-9FFAC28A60B3}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="tblCandName">
+      <DTS:VariableValue
+        DTS:DataType="8">##Candidate</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{52D64B8F-3148-4E2C-939C-BBC2B0F4F32D}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="tblReferrer">
+      <DTS:VariableValue
+        DTS:DataType="8">##Referrer</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{885DA387-C563-4D7C-9049-A3594E5F7AB7}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="tblRequisition">
+      <DTS:VariableValue
+        DTS:DataType="8">##Requisition</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Candidate Status"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{3F256130-8B70-4A00-8423-472EB4179BD5}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Candidate Status">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Candidate Status\Process CandidateStatus"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{ADD0C7BB-C769-493F-8327-D9880646B969}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Process CandidateStatus"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Candidate Status\Process CandidateStatus\Exec SaveMailInformation"
+                  componentClassID="Microsoft.OLEDBCommand"
+                  contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+                  description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+                  name="Exec SaveMailInformation"
+                  usesDispositions="true"
+                  version="2">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      expressionType="Notify"
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">EXEC [EmpRef].[SaveMailInformation] ?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Candidate Status\Process CandidateStatus\Exec SaveMailInformation.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[3468_EmploRefer]"
+                      connectionManagerRefId="Package.ConnectionManagers[3468_EmploRefer]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Candidate Status\Process CandidateStatus\Exec SaveMailInformation.Inputs[OLE DB Command Input]"
+                      errorOrTruncationOperation="Command Execution"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Command Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Candidate Status\Process CandidateStatus\Exec SaveMailInformation.Inputs[OLE DB Command Input].Columns[RequisitionId]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="20"
+                          cachedName="RequisitionId"
+                          externalMetadataColumnId="Package\Candidate Status\Process CandidateStatus\Exec SaveMailInformation.Inputs[OLE DB Command Input].ExternalColumns[@RequisitionId]"
+                          lineageId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Output].Columns[RequisitionId]" />
+                        <inputColumn
+                          refId="Package\Candidate Status\Process CandidateStatus\Exec SaveMailInformation.Inputs[OLE DB Command Input].Columns[RequisitionSourceCd]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="15"
+                          cachedName="RequisitionSourceCd"
+                          externalMetadataColumnId="Package\Candidate Status\Process CandidateStatus\Exec SaveMailInformation.Inputs[OLE DB Command Input].ExternalColumns[@RequisitionSourceCd]"
+                          lineageId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Output].Columns[RequisitionSourceCd]" />
+                        <inputColumn
+                          refId="Package\Candidate Status\Process CandidateStatus\Exec SaveMailInformation.Inputs[OLE DB Command Input].Columns[CandidateId]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="15"
+                          cachedName="CandidateId"
+                          externalMetadataColumnId="Package\Candidate Status\Process CandidateStatus\Exec SaveMailInformation.Inputs[OLE DB Command Input].ExternalColumns[@CandidateId]"
+                          lineageId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Output].Columns[CandidateId]" />
+                        <inputColumn
+                          refId="Package\Candidate Status\Process CandidateStatus\Exec SaveMailInformation.Inputs[OLE DB Command Input].Columns[CandidateSourceCd]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="15"
+                          cachedName="CandidateSourceCd"
+                          externalMetadataColumnId="Package\Candidate Status\Process CandidateStatus\Exec SaveMailInformation.Inputs[OLE DB Command Input].ExternalColumns[@CandidateSourceCd]"
+                          lineageId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Output].Columns[CandidateSourceCd]" />
+                        <inputColumn
+                          refId="Package\Candidate Status\Process CandidateStatus\Exec SaveMailInformation.Inputs[OLE DB Command Input].Columns[PeopleKey]"
+                          cachedDataType="i4"
+                          cachedName="PeopleKey"
+                          externalMetadataColumnId="Package\Candidate Status\Process CandidateStatus\Exec SaveMailInformation.Inputs[OLE DB Command Input].ExternalColumns[@PeopleKey]"
+                          lineageId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Output].Columns[PeopleKey]" />
+                        <inputColumn
+                          refId="Package\Candidate Status\Process CandidateStatus\Exec SaveMailInformation.Inputs[OLE DB Command Input].Columns[SystemSourceDesc]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="SystemSourceDesc"
+                          externalMetadataColumnId="Package\Candidate Status\Process CandidateStatus\Exec SaveMailInformation.Inputs[OLE DB Command Input].ExternalColumns[@SystemSourceDesc]"
+                          lineageId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Output].Columns[SystemSourceDesc]" />
+                        <inputColumn
+                          refId="Package\Candidate Status\Process CandidateStatus\Exec SaveMailInformation.Inputs[OLE DB Command Input].Columns[ReferralStatusDesc]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="ReferralStatusDesc"
+                          externalMetadataColumnId="Package\Candidate Status\Process CandidateStatus\Exec SaveMailInformation.Inputs[OLE DB Command Input].ExternalColumns[@ReferralStatusDesc]"
+                          lineageId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Output].Columns[ReferralStatusDesc]" />
+                        <inputColumn
+                          refId="Package\Candidate Status\Process CandidateStatus\Exec SaveMailInformation.Inputs[OLE DB Command Input].Columns[OriginalReferStatusDesc]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="100"
+                          cachedName="OriginalReferStatusDesc"
+                          externalMetadataColumnId="Package\Candidate Status\Process CandidateStatus\Exec SaveMailInformation.Inputs[OLE DB Command Input].ExternalColumns[@OriginalReferStatusDesc]"
+                          lineageId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Output].Columns[OriginalReferStatusDesc]" />
+                        <inputColumn
+                          refId="Package\Candidate Status\Process CandidateStatus\Exec SaveMailInformation.Inputs[OLE DB Command Input].Columns[ReferredDt]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="ReferredDt"
+                          externalMetadataColumnId="Package\Candidate Status\Process CandidateStatus\Exec SaveMailInformation.Inputs[OLE DB Command Input].ExternalColumns[@ReferredDt]"
+                          lineageId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Output].Columns[ReferredDt]" />
+                        <inputColumn
+                          refId="Package\Candidate Status\Process CandidateStatus\Exec SaveMailInformation.Inputs[OLE DB Command Input].Columns[HiredDt]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="HiredDt"
+                          externalMetadataColumnId="Package\Candidate Status\Process CandidateStatus\Exec SaveMailInformation.Inputs[OLE DB Command Input].ExternalColumns[@HiredDt]"
+                          lineageId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Output].Columns[HiredDt]" />
+                        <inputColumn
+                          refId="Package\Candidate Status\Process CandidateStatus\Exec SaveMailInformation.Inputs[OLE DB Command Input].Columns[LastModifiedDttm]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="LastModifiedDttm"
+                          externalMetadataColumnId="Package\Candidate Status\Process CandidateStatus\Exec SaveMailInformation.Inputs[OLE DB Command Input].ExternalColumns[@LastModifiedDttm]"
+                          lineageId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Output].Columns[LastModifiedDttm]" />
+                        <inputColumn
+                          refId="Package\Candidate Status\Process CandidateStatus\Exec SaveMailInformation.Inputs[OLE DB Command Input].Columns[CreateUserId]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="CreateUserId"
+                          externalMetadataColumnId="Package\Candidate Status\Process CandidateStatus\Exec SaveMailInformation.Inputs[OLE DB Command Input].ExternalColumns[@CreateUserId]"
+                          lineageId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Output].Columns[CreateUserId]" />
+                        <inputColumn
+                          refId="Package\Candidate Status\Process CandidateStatus\Exec SaveMailInformation.Inputs[OLE DB Command Input].Columns[CreateDttm]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="CreateDttm"
+                          externalMetadataColumnId="Package\Candidate Status\Process CandidateStatus\Exec SaveMailInformation.Inputs[OLE DB Command Input].ExternalColumns[@CreateDttm]"
+                          lineageId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Output].Columns[CreateDttm]" />
+                        <inputColumn
+                          refId="Package\Candidate Status\Process CandidateStatus\Exec SaveMailInformation.Inputs[OLE DB Command Input].Columns[UpdateUserId]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="UpdateUserId"
+                          externalMetadataColumnId="Package\Candidate Status\Process CandidateStatus\Exec SaveMailInformation.Inputs[OLE DB Command Input].ExternalColumns[@UpdateUserId]"
+                          lineageId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Output].Columns[UpdateUserId]" />
+                        <inputColumn
+                          refId="Package\Candidate Status\Process CandidateStatus\Exec SaveMailInformation.Inputs[OLE DB Command Input].Columns[UpdateDttm]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="UpdateDttm"
+                          externalMetadataColumnId="Package\Candidate Status\Process CandidateStatus\Exec SaveMailInformation.Inputs[OLE DB Command Input].ExternalColumns[@UpdateDttm]"
+                          lineageId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Output].Columns[UpdateDttm]" />
+                        <inputColumn
+                          refId="Package\Candidate Status\Process CandidateStatus\Exec SaveMailInformation.Inputs[OLE DB Command Input].Columns[CSWLatestStep]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="250"
+                          cachedName="CSWLatestStep"
+                          externalMetadataColumnId="Package\Candidate Status\Process CandidateStatus\Exec SaveMailInformation.Inputs[OLE DB Command Input].ExternalColumns[@CSWLatestStep]"
+                          lineageId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Output].Columns[CSWLatestStep]" />
+                        <inputColumn
+                          refId="Package\Candidate Status\Process CandidateStatus\Exec SaveMailInformation.Inputs[OLE DB Command Input].Columns[CSWLatestDate]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="CSWLatestDate"
+                          externalMetadataColumnId="Package\Candidate Status\Process CandidateStatus\Exec SaveMailInformation.Inputs[OLE DB Command Input].ExternalColumns[@CSWLatestDate]"
+                          lineageId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Output].Columns[CSWLatestDate]" />
+                        <inputColumn
+                          refId="Package\Candidate Status\Process CandidateStatus\Exec SaveMailInformation.Inputs[OLE DB Command Input].Columns[ApplicationRequisitionTitle]"
+                          cachedDataType="wstr"
+                          cachedLength="510"
+                          cachedName="ApplicationRequisitionTitle"
+                          externalMetadataColumnId="Package\Candidate Status\Process CandidateStatus\Exec SaveMailInformation.Inputs[OLE DB Command Input].ExternalColumns[@ApplicationRequisitionTitle]"
+                          lineageId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Output].Columns[ApplicationRequisitionTitle]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Candidate Status\Process CandidateStatus\Exec SaveMailInformation.Inputs[OLE DB Command Input].ExternalColumns[@RequisitionId]"
+                          codePage="1252"
+                          dataType="str"
+                          length="20"
+                          name="@RequisitionId">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">65</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\Candidate Status\Process CandidateStatus\Exec SaveMailInformation.Inputs[OLE DB Command Input].ExternalColumns[@RequisitionSourceCd]"
+                          codePage="1252"
+                          dataType="str"
+                          length="15"
+                          name="@RequisitionSourceCd">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">65</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\Candidate Status\Process CandidateStatus\Exec SaveMailInformation.Inputs[OLE DB Command Input].ExternalColumns[@CandidateId]"
+                          codePage="1252"
+                          dataType="str"
+                          length="15"
+                          name="@CandidateId">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">65</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\Candidate Status\Process CandidateStatus\Exec SaveMailInformation.Inputs[OLE DB Command Input].ExternalColumns[@CandidateSourceCd]"
+                          codePage="1252"
+                          dataType="str"
+                          length="15"
+                          name="@CandidateSourceCd">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">65</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\Candidate Status\Process CandidateStatus\Exec SaveMailInformation.Inputs[OLE DB Command Input].ExternalColumns[@PeopleKey]"
+                          dataType="i4"
+                          name="@PeopleKey">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">81</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\Candidate Status\Process CandidateStatus\Exec SaveMailInformation.Inputs[OLE DB Command Input].ExternalColumns[@SystemSourceDesc]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="@SystemSourceDesc">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">65</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\Candidate Status\Process CandidateStatus\Exec SaveMailInformation.Inputs[OLE DB Command Input].ExternalColumns[@ReferralStatusDesc]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="@ReferralStatusDesc">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">65</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\Candidate Status\Process CandidateStatus\Exec SaveMailInformation.Inputs[OLE DB Command Input].ExternalColumns[@OriginalReferStatusDesc]"
+                          codePage="1252"
+                          dataType="str"
+                          length="100"
+                          name="@OriginalReferStatusDesc">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">65</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\Candidate Status\Process CandidateStatus\Exec SaveMailInformation.Inputs[OLE DB Command Input].ExternalColumns[@ReferredDt]"
+                          dataType="dbTimeStamp"
+                          name="@ReferredDt">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">65</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\Candidate Status\Process CandidateStatus\Exec SaveMailInformation.Inputs[OLE DB Command Input].ExternalColumns[@HiredDt]"
+                          dataType="dbTimeStamp"
+                          name="@HiredDt">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">65</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\Candidate Status\Process CandidateStatus\Exec SaveMailInformation.Inputs[OLE DB Command Input].ExternalColumns[@LastModifiedDttm]"
+                          dataType="dbTimeStamp"
+                          name="@LastModifiedDttm">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">65</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\Candidate Status\Process CandidateStatus\Exec SaveMailInformation.Inputs[OLE DB Command Input].ExternalColumns[@CreateUserId]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="@CreateUserId">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">65</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\Candidate Status\Process CandidateStatus\Exec SaveMailInformation.Inputs[OLE DB Command Input].ExternalColumns[@CreateDttm]"
+                          dataType="dbTimeStamp"
+                          name="@CreateDttm">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">65</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\Candidate Status\Process CandidateStatus\Exec SaveMailInformation.Inputs[OLE DB Command Input].ExternalColumns[@UpdateUserId]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="@UpdateUserId">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">65</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\Candidate Status\Process CandidateStatus\Exec SaveMailInformation.Inputs[OLE DB Command Input].ExternalColumns[@UpdateDttm]"
+                          dataType="dbTimeStamp"
+                          name="@UpdateDttm">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">65</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\Candidate Status\Process CandidateStatus\Exec SaveMailInformation.Inputs[OLE DB Command Input].ExternalColumns[@CSWLatestStep]"
+                          codePage="1252"
+                          dataType="str"
+                          length="100"
+                          name="@CSWLatestStep">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">65</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\Candidate Status\Process CandidateStatus\Exec SaveMailInformation.Inputs[OLE DB Command Input].ExternalColumns[@CSWLatestDate]"
+                          dataType="dbTimeStamp"
+                          name="@CSWLatestDate">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">65</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\Candidate Status\Process CandidateStatus\Exec SaveMailInformation.Inputs[OLE DB Command Input].ExternalColumns[@ApplicationRequisitionTitle]"
+                          dataType="wstr"
+                          length="510"
+                          name="@ApplicationRequisitionTitle">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">65</property>
+                          </properties>
+                        </externalMetadataColumn>
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Candidate Status\Process CandidateStatus\Exec SaveMailInformation.Outputs[OLE DB Command Output]"
+                      exclusionGroup="1"
+                      name="OLE DB Command Output"
+                      synchronousInputId="Package\Candidate Status\Process CandidateStatus\Exec SaveMailInformation.Inputs[OLE DB Command Input]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Candidate Status\Process CandidateStatus\Exec SaveMailInformation.Outputs[OLE DB Command Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Command Error Output"
+                      synchronousInputId="Package\Candidate Status\Process CandidateStatus\Exec SaveMailInformation.Inputs[OLE DB Command Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Candidate Status\Process CandidateStatus\Exec SaveMailInformation.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Candidate Status\Process CandidateStatus\Exec SaveMailInformation.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Candidate Status\Process CandidateStatus\Exec SaveMailInformation.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Candidate Status\Process CandidateStatus\Exec SaveMailInformation.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Candidate Status\Process CandidateStatus\Get Candidate List"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="Get Candidate List"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset"></property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">Select EmpRef.CandidateStatus.RequisitionId
+                                            ,EmpRef.CandidateStatus.RequisitionSourceCd
+                                            ,EmpRef.CandidateStatus.CandidateId
+                                            ,EmpRef.CandidateStatus.CandidateSourceCd
+                                            ,EmpRef.CandidateStatus.PeopleKey
+                                            ,EmpRef.CandidateStatus.SystemSourceDesc
+                                            ,ReferralStatusDesc
+                                            ,OriginalReferStatusDesc
+                                            ,ReferredDt
+                                            ,HiredDt
+                                            ,EmpRef.CandidateStatus.LastModifiedDttm
+                                            ,EmpRef.CandidateStatus.CreateUserId
+                                            ,EmpRef.CandidateStatus.CreateDttm
+                                            ,EmpRef.CandidateStatus.UpdateUserId
+                                            ,EmpRef.CandidateStatus.UpdateDttm 
+                                            ,EmpRef.CandidateStatus.CSWLatestStep
+                                            ,EmpRef.CandidateStatus.CSWLatestDate
+											,EmpRef.CandidateStatus.ApplicationRequisitionTitle
+                                            from EmpRef.CandidateStatus left Join EmpRef.Requisition
+                                            On EmpRef.CandidateStatus.RequisitionId = EmpRef.Requisition.RequisitionId 
+                                            and EmpRef.CandidateStatus.RequisitionSourceCd =
+                                            EmpRef.Requisition.RequisitionSourceCd 
+                                            Inner Join EmpRef.Candidate 
+                                            On EmpRef.CandidateStatus.CandidateId = EmpRef.Candidate.CandidateId 
+                                            and EmpRef.CandidateStatus.CandidateSourceCd = EmpRef.Candidate.CandidateSourceCd 
+                                            Inner Join EmpRef.Referrer 
+                                            On EmpRef.CandidateStatus.PeopleKey = EmpRef.Referrer.PeopleKey 
+                                            Where (EmpRef.Requisition.RequisitionSourceCd NOT IN ('CWS-9002') OR ISNULL(EmpRef.Requisition.RequisitionSourceCd,'') = '')
+                                            AND EmpRef.CandidateStatus.CreateDttm IS NOT NULL 
+                                            AND EmpRef.CandidateStatus.UpdateDttm&gt;?
+                                            ORDER BY EmpRef.CandidateStatus.UpdateDttm ASC</property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">2</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping">"0:Input",{F3B7307B-DF85-496A-8530-C3266CBF97EA};</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[2761_EnterpriseODS]"
+                      connectionManagerRefId="Package.ConnectionManagers[2761_EnterpriseODS]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Output].Columns[RequisitionId]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Output].ExternalColumns[RequisitionId]"
+                          length="20"
+                          lineageId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Output].Columns[RequisitionId]"
+                          name="RequisitionId"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Output].Columns[RequisitionSourceCd]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Output].ExternalColumns[RequisitionSourceCd]"
+                          length="15"
+                          lineageId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Output].Columns[RequisitionSourceCd]"
+                          name="RequisitionSourceCd"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Output].Columns[CandidateId]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Output].ExternalColumns[CandidateId]"
+                          length="15"
+                          lineageId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Output].Columns[CandidateId]"
+                          name="CandidateId"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Output].Columns[CandidateSourceCd]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Output].ExternalColumns[CandidateSourceCd]"
+                          length="15"
+                          lineageId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Output].Columns[CandidateSourceCd]"
+                          name="CandidateSourceCd"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Output].Columns[PeopleKey]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Output].ExternalColumns[PeopleKey]"
+                          lineageId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Output].Columns[PeopleKey]"
+                          name="PeopleKey"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Output].Columns[SystemSourceDesc]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Output].ExternalColumns[SystemSourceDesc]"
+                          length="50"
+                          lineageId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Output].Columns[SystemSourceDesc]"
+                          name="SystemSourceDesc"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Output].Columns[ReferralStatusDesc]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Output].ExternalColumns[ReferralStatusDesc]"
+                          length="50"
+                          lineageId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Output].Columns[ReferralStatusDesc]"
+                          name="ReferralStatusDesc"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Output].Columns[OriginalReferStatusDesc]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Output].ExternalColumns[OriginalReferStatusDesc]"
+                          length="100"
+                          lineageId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Output].Columns[OriginalReferStatusDesc]"
+                          name="OriginalReferStatusDesc"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Output].Columns[ReferredDt]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Output].ExternalColumns[ReferredDt]"
+                          lineageId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Output].Columns[ReferredDt]"
+                          name="ReferredDt"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Output].Columns[HiredDt]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Output].ExternalColumns[HiredDt]"
+                          lineageId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Output].Columns[HiredDt]"
+                          name="HiredDt"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Output].Columns[LastModifiedDttm]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Output].ExternalColumns[LastModifiedDttm]"
+                          lineageId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Output].Columns[LastModifiedDttm]"
+                          name="LastModifiedDttm"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Output].Columns[CreateUserId]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Output].ExternalColumns[CreateUserId]"
+                          length="50"
+                          lineageId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Output].Columns[CreateUserId]"
+                          name="CreateUserId"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Output].Columns[CreateDttm]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Output].ExternalColumns[CreateDttm]"
+                          lineageId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Output].Columns[CreateDttm]"
+                          name="CreateDttm"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Output].Columns[UpdateUserId]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Output].ExternalColumns[UpdateUserId]"
+                          length="50"
+                          lineageId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Output].Columns[UpdateUserId]"
+                          name="UpdateUserId"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Output].Columns[UpdateDttm]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Output].ExternalColumns[UpdateDttm]"
+                          lineageId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Output].Columns[UpdateDttm]"
+                          name="UpdateDttm"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Output].Columns[CSWLatestStep]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Output].ExternalColumns[CSWLatestStep]"
+                          length="250"
+                          lineageId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Output].Columns[CSWLatestStep]"
+                          name="CSWLatestStep"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Output].Columns[CSWLatestDate]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Output].ExternalColumns[CSWLatestDate]"
+                          lineageId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Output].Columns[CSWLatestDate]"
+                          name="CSWLatestDate"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Output].Columns[ApplicationRequisitionTitle]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Output].ExternalColumns[ApplicationRequisitionTitle]"
+                          length="510"
+                          lineageId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Output].Columns[ApplicationRequisitionTitle]"
+                          name="ApplicationRequisitionTitle"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Output].ExternalColumns[RequisitionId]"
+                          codePage="1252"
+                          dataType="str"
+                          length="20"
+                          name="RequisitionId" />
+                        <externalMetadataColumn
+                          refId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Output].ExternalColumns[RequisitionSourceCd]"
+                          codePage="1252"
+                          dataType="str"
+                          length="15"
+                          name="RequisitionSourceCd" />
+                        <externalMetadataColumn
+                          refId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Output].ExternalColumns[CandidateId]"
+                          codePage="1252"
+                          dataType="str"
+                          length="15"
+                          name="CandidateId" />
+                        <externalMetadataColumn
+                          refId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Output].ExternalColumns[CandidateSourceCd]"
+                          codePage="1252"
+                          dataType="str"
+                          length="15"
+                          name="CandidateSourceCd" />
+                        <externalMetadataColumn
+                          refId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Output].ExternalColumns[PeopleKey]"
+                          dataType="i4"
+                          name="PeopleKey" />
+                        <externalMetadataColumn
+                          refId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Output].ExternalColumns[SystemSourceDesc]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="SystemSourceDesc" />
+                        <externalMetadataColumn
+                          refId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Output].ExternalColumns[ReferralStatusDesc]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="ReferralStatusDesc" />
+                        <externalMetadataColumn
+                          refId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Output].ExternalColumns[OriginalReferStatusDesc]"
+                          codePage="1252"
+                          dataType="str"
+                          length="100"
+                          name="OriginalReferStatusDesc" />
+                        <externalMetadataColumn
+                          refId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Output].ExternalColumns[ReferredDt]"
+                          dataType="dbTimeStamp"
+                          name="ReferredDt" />
+                        <externalMetadataColumn
+                          refId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Output].ExternalColumns[HiredDt]"
+                          dataType="dbTimeStamp"
+                          name="HiredDt" />
+                        <externalMetadataColumn
+                          refId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Output].ExternalColumns[LastModifiedDttm]"
+                          dataType="dbTimeStamp"
+                          name="LastModifiedDttm" />
+                        <externalMetadataColumn
+                          refId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Output].ExternalColumns[CreateUserId]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="CreateUserId" />
+                        <externalMetadataColumn
+                          refId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Output].ExternalColumns[CreateDttm]"
+                          dataType="dbTimeStamp"
+                          name="CreateDttm" />
+                        <externalMetadataColumn
+                          refId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Output].ExternalColumns[UpdateUserId]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="UpdateUserId" />
+                        <externalMetadataColumn
+                          refId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Output].ExternalColumns[UpdateDttm]"
+                          dataType="dbTimeStamp"
+                          name="UpdateDttm" />
+                        <externalMetadataColumn
+                          refId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Output].ExternalColumns[CSWLatestStep]"
+                          codePage="1252"
+                          dataType="str"
+                          length="250"
+                          name="CSWLatestStep" />
+                        <externalMetadataColumn
+                          refId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Output].ExternalColumns[CSWLatestDate]"
+                          dataType="dbTimeStamp"
+                          name="CSWLatestDate" />
+                        <externalMetadataColumn
+                          refId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Output].ExternalColumns[ApplicationRequisitionTitle]"
+                          dataType="wstr"
+                          length="510"
+                          name="ApplicationRequisitionTitle" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Error Output].Columns[RequisitionId]"
+                          codePage="1252"
+                          dataType="str"
+                          length="20"
+                          lineageId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Error Output].Columns[RequisitionId]"
+                          name="RequisitionId" />
+                        <outputColumn
+                          refId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Error Output].Columns[RequisitionSourceCd]"
+                          codePage="1252"
+                          dataType="str"
+                          length="15"
+                          lineageId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Error Output].Columns[RequisitionSourceCd]"
+                          name="RequisitionSourceCd" />
+                        <outputColumn
+                          refId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Error Output].Columns[CandidateId]"
+                          codePage="1252"
+                          dataType="str"
+                          length="15"
+                          lineageId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Error Output].Columns[CandidateId]"
+                          name="CandidateId" />
+                        <outputColumn
+                          refId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Error Output].Columns[CandidateSourceCd]"
+                          codePage="1252"
+                          dataType="str"
+                          length="15"
+                          lineageId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Error Output].Columns[CandidateSourceCd]"
+                          name="CandidateSourceCd" />
+                        <outputColumn
+                          refId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Error Output].Columns[PeopleKey]"
+                          dataType="i4"
+                          lineageId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Error Output].Columns[PeopleKey]"
+                          name="PeopleKey" />
+                        <outputColumn
+                          refId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Error Output].Columns[SystemSourceDesc]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Error Output].Columns[SystemSourceDesc]"
+                          name="SystemSourceDesc" />
+                        <outputColumn
+                          refId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Error Output].Columns[ReferralStatusDesc]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Error Output].Columns[ReferralStatusDesc]"
+                          name="ReferralStatusDesc" />
+                        <outputColumn
+                          refId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Error Output].Columns[OriginalReferStatusDesc]"
+                          codePage="1252"
+                          dataType="str"
+                          length="100"
+                          lineageId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Error Output].Columns[OriginalReferStatusDesc]"
+                          name="OriginalReferStatusDesc" />
+                        <outputColumn
+                          refId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Error Output].Columns[ReferredDt]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Error Output].Columns[ReferredDt]"
+                          name="ReferredDt" />
+                        <outputColumn
+                          refId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Error Output].Columns[HiredDt]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Error Output].Columns[HiredDt]"
+                          name="HiredDt" />
+                        <outputColumn
+                          refId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Error Output].Columns[LastModifiedDttm]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Error Output].Columns[LastModifiedDttm]"
+                          name="LastModifiedDttm" />
+                        <outputColumn
+                          refId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Error Output].Columns[CreateUserId]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Error Output].Columns[CreateUserId]"
+                          name="CreateUserId" />
+                        <outputColumn
+                          refId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Error Output].Columns[CreateDttm]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Error Output].Columns[CreateDttm]"
+                          name="CreateDttm" />
+                        <outputColumn
+                          refId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Error Output].Columns[UpdateUserId]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Error Output].Columns[UpdateUserId]"
+                          name="UpdateUserId" />
+                        <outputColumn
+                          refId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Error Output].Columns[UpdateDttm]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Error Output].Columns[UpdateDttm]"
+                          name="UpdateDttm" />
+                        <outputColumn
+                          refId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Error Output].Columns[CSWLatestStep]"
+                          codePage="1252"
+                          dataType="str"
+                          length="250"
+                          lineageId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Error Output].Columns[CSWLatestStep]"
+                          name="CSWLatestStep" />
+                        <outputColumn
+                          refId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Error Output].Columns[CSWLatestDate]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Error Output].Columns[CSWLatestDate]"
+                          name="CSWLatestDate" />
+                        <outputColumn
+                          refId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Error Output].Columns[ApplicationRequisitionTitle]"
+                          dataType="wstr"
+                          length="510"
+                          lineageId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Error Output].Columns[ApplicationRequisitionTitle]"
+                          name="ApplicationRequisitionTitle" />
+                        <outputColumn
+                          refId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Candidate Status\Process CandidateStatus.Paths[OLE DB Source Output]"
+                  endId="Package\Candidate Status\Process CandidateStatus\Exec SaveMailInformation.Inputs[OLE DB Command Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\Candidate Status\Process CandidateStatus\Get Candidate List.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Candidate Status\Update Last Processing Date"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{7AC14EAA-7C47-44B8-BB35-05B6144CFD66}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Update Last Processing Date"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{C7F408FC-6710-49A2-A882-31A6D521F2CC}"
+              SQLTask:SqlStatementSource="update a&#xA;set a.decodetxt = DATEADD(DAY,-1,?)&#xA;from empref.codedetail a&#xA;join empref.codedetail b&#xA;on a.parentcodetxt = b.codetxt&#xA;and a.ParentCategoryNbr = b.CategoryNbr&#xA;join empref.codeheader c&#xA;on c.categorynbr = b.categorynbr&#xA;where &#xA;c.categorydesc = 'Last Processing Date'&#xA;and b.DecodeTxt = 'CandidateStatus'" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::dtCurrent"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="7"
+                SQLTask:ParameterSize="0" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Candidate Status.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{4B862737-77FC-4A54-891B-E3BD8513E03E}"
+          DTS:From="Package\Candidate Status\Process CandidateStatus"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Candidate Status\Update Last Processing Date" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Create Temp Tables"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Create temp table for Requisition"
+      DTS:DTSID="{A1199ACE-7E14-496F-A168-8DD59693211C}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Create Temp Tables"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; Microsoft SQL Server 2008 R2; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{C7F408FC-6710-49A2-A882-31A6D521F2CC}"
+          SQLTask:BypassPrepare="False"
+          SQLTask:SqlStatementSource="--initially temporary tables are eliminated in case there&#xA;IF object_id('tempdb..##CandidateStatus') IS NOT NULL &#xA;BEGIN &#xA; DROP TABLE ##CandidateStatus&#xA;END &#xA;&#xA;CREATE TABLE ##CandidateStatus(&#xA; [CandidateID] [varchar](15) NOT NULL, &#xA; [CandidateSourceCd] [varchar](15) NOT NULL,&#xA; [RequisitionId] [varchar](20) NOT NULL, &#xA; [RequisitionSourceCd] [varchar](15) NOT NULL,&#xA; [PeopleKey] INT NOT NULL&#xA;)&#xA; &#xA;GO&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Delete Temp Tables"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Create temp table for Requisition"
+      DTS:DTSID="{5B8F79E9-88C8-49BD-BEA3-B9421328969C}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Delete Temp Tables"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; Microsoft SQL Server 2008 R2; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{C7F408FC-6710-49A2-A882-31A6D521F2CC}"
+          SQLTask:BypassPrepare="False"
+          SQLTask:SqlStatementSource="--initially temporary tables are eliminated in case there&#xA;IF object_id('tempdb..##CandidateStatus') IS NOT NULL &#xA;BEGIN &#xA; DROP TABLE ##CandidateStatus&#xA;END " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\End Log Task"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{0B9321BE-7FF8-4D04-916D-A765FA6FA5C7}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="End Log Task"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{C466292E-6F2C-4E08-B4FF-EC34723AFBD3}"
+          SQLTask:BypassPrepare="False"
+          SQLTask:SqlStatementSource="exec admin.sp_ExecutionLog 'SUCCESS',?,null,null,?,?,?,?,?,?,null,null,null,0" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="User::DateExecution"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="7"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="1"
+            SQLTask:DtsVariableName="System::VersionBuild"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="131"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="2"
+            SQLTask:DtsVariableName="System::VersionMajor"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="131"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="3"
+            SQLTask:DtsVariableName="System::VersionMinor"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="131"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="4"
+            SQLTask:DtsVariableName="System::PackageName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="129"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="5"
+            SQLTask:DtsVariableName="System::ExecutionInstanceGUID"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="129"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="6"
+            SQLTask:DtsVariableName="System::TaskID"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="129"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Execute Stored Procedures"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{7DB778A4-46E7-4403-9E53-23084AB7BAFF}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Execute Stored Procedures">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Execute Stored Procedures\Latest Progression"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{82806492-D144-4DF7-8037-10B971EB3FE3}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Latest Progression"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{C7F408FC-6710-49A2-A882-31A6D521F2CC}"
+              SQLTask:SqlStatementSource="EXECUTE [EmpRef].[ProcessLatestProgression] 0" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Execute Stored Procedures\Referral Tree"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{E2D032F8-3F3F-4D5B-A632-6438F728BA68}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Referral Tree"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{C7F408FC-6710-49A2-A882-31A6D521F2CC}"
+              SQLTask:SqlStatementSource="EXECUTE [EmpRef].[UpdateReferralTree] 0, ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::dtUpdateReferralTree"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="7"
+                SQLTask:ParameterSize="0" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Execute Stored Procedures\Referral Tree Count"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{BBEB2739-C99B-4A80-8061-A86C86C03847}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Referral Tree Count"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{C7F408FC-6710-49A2-A882-31A6D521F2CC}"
+              SQLTask:SqlStatementSource="EXEC [EmpRef].[UpdateReferralSize] 0,?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::dtUpdateReferralCount"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="7"
+                SQLTask:ParameterSize="0" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Execute Stored Procedures\Referral Tree Json"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{F93DBD08-61A6-4E36-9551-7F429FD24157}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Referral Tree Json"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{C7F408FC-6710-49A2-A882-31A6D521F2CC}"
+              SQLTask:SqlStatementSource="EXEC [EmpRef].[UpdateReferralTreeJson] 0,?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::dtUpdateReferralTreeJSON"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="7"
+                SQLTask:ParameterSize="0" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Execute Stored Procedures.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{4F524D6A-A030-4812-AB17-165146582C97}"
+          DTS:From="Package\Execute Stored Procedures\Latest Progression"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Execute Stored Procedures\Referral Tree" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Execute Stored Procedures.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{48D87C51-B571-49C2-9C0E-826CDEFBD760}"
+          DTS:From="Package\Execute Stored Procedures\Referral Tree"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\Execute Stored Procedures\Referral Tree Count" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Execute Stored Procedures.PrecedenceConstraints[Constraint 2]"
+          DTS:CreationName=""
+          DTS:DTSID="{066BF801-795F-4D8A-942F-61B25DDDD551}"
+          DTS:From="Package\Execute Stored Procedures\Referral Tree Count"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 2"
+          DTS:To="Package\Execute Stored Procedures\Referral Tree Json" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Get Last Processing Date"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{E76F97D5-E7E0-4526-B884-0C8D8EA37478}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Get Last Processing Date">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Get Last Processing Date\CandidateStatus"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="CandidateStatus"
+          DTS:DTSID="{6A2AA7ED-2F60-45AA-B5FC-C4C9FAB19EC1}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="CandidateStatus"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{C7F408FC-6710-49A2-A882-31A6D521F2CC}"
+              SQLTask:SqlStatementSource="select convert(date,a.DecodeTxt) from empref.codedetail a&#xA;join empref.codedetail b&#xA;on a.parentcodetxt = b.codetxt&#xA;and a.ParentCategoryNbr = b.CategoryNbr&#xA;join empref.codeheader c&#xA;on c.categorynbr = b.categorynbr&#xA;where &#xA;c.categorydesc = 'Last Processing Date'&#xA;and b.DecodeTxt = 'CandidateStatus'"
+              SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ResultBinding
+                SQLTask:ResultName="0"
+                SQLTask:DtsVariableName="User::dtCandidateStatusLastProcDate" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Get Last Processing Date\Get Current Date"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{474B1B84-2C0C-4A64-984A-3F9916B533F9}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Get Current Date"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{C7F408FC-6710-49A2-A882-31A6D521F2CC}"
+              SQLTask:SqlStatementSource="SELECT CONVERT(DATE,GETDATE())"
+              SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ResultBinding
+                SQLTask:ResultName="0"
+                SQLTask:DtsVariableName="User::dtCurrent" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Get Last Processing Date\UpdateReferralCount"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="UpdateReferralCount"
+          DTS:DTSID="{45CC0CD9-C4E9-4866-95BA-E033CDB605C0}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="UpdateReferralCount"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="2">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{C7F408FC-6710-49A2-A882-31A6D521F2CC}"
+              SQLTask:SqlStatementSource="select convert(date,a.DecodeTxt) from empref.codedetail a&#xA;join empref.codedetail b&#xA;on a.parentcodetxt = b.codetxt&#xA;and a.ParentCategoryNbr = b.CategoryNbr&#xA;join empref.codeheader c&#xA;on c.categorynbr = b.categorynbr&#xA;where &#xA;c.categorydesc = 'Last Processing Date'&#xA;and b.DecodeTxt = 'UpdateReferralCount'"
+              SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ResultBinding
+                SQLTask:ResultName="0"
+                SQLTask:DtsVariableName="User::dtUpdateReferralCount" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Get Last Processing Date\UpdateReferralCountTreeJson"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="UpdateReferralCountTreeJson"
+          DTS:DTSID="{E195AA4E-6C9E-4DC3-A3CF-1040B715E99B}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="UpdateReferralCountTreeJson"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="3">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{C7F408FC-6710-49A2-A882-31A6D521F2CC}"
+              SQLTask:SqlStatementSource="select convert(date,a.DecodeTxt) from empref.codedetail a&#xA;join empref.codedetail b&#xA;on a.parentcodetxt = b.codetxt&#xA;and a.ParentCategoryNbr = b.CategoryNbr&#xA;join empref.codeheader c&#xA;on c.categorynbr = b.categorynbr&#xA;where &#xA;c.categorydesc = 'Last Processing Date'&#xA;and b.DecodeTxt = 'UpdateReferralTreeJson'"
+              SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ResultBinding
+                SQLTask:ResultName="0"
+                SQLTask:DtsVariableName="User::dtUpdateReferralTreeJSON" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Get Last Processing Date\UpdateReferralTree"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="UpdateReferralTree"
+          DTS:DTSID="{24618313-8AA1-4365-B6B5-49CC0B3AC328}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="UpdateReferralTree"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="4">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{C7F408FC-6710-49A2-A882-31A6D521F2CC}"
+              SQLTask:SqlStatementSource="select convert(date,a.DecodeTxt) from empref.codedetail a&#xA;join empref.codedetail b&#xA;on a.parentcodetxt = b.codetxt&#xA;and a.ParentCategoryNbr = b.CategoryNbr&#xA;join empref.codeheader c&#xA;on c.categorynbr = b.categorynbr&#xA;where &#xA;c.categorydesc = 'Last Processing Date'&#xA;and b.DecodeTxt = 'UpdateReferralTree'"
+              SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ResultBinding
+                SQLTask:ResultName="0"
+                SQLTask:DtsVariableName="User::dtUpdateReferralTree" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Get Processing Date"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Get Processing Date"
+      DTS:DTSID="{CDCBF440-8F75-49B2-B690-AEEDD59AE86D}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Get Processing Date"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{C466292E-6F2C-4E08-B4FF-EC34723AFBD3}"
+          SQLTask:BypassPrepare="False"
+          SQLTask:SqlStatementSource="SELECT ProcessingDttm FROM [admin].[ProcessingDate] with (nolock) where TableNm = ?"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="0"
+            SQLTask:DtsVariableName="User::DateExecution" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="User::strGetProcessingDateTable"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="129"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Send the Report"
+      DTS:CreationName="Microsoft.SendMailTask"
+      DTS:Description="Send Mail Task"
+      DTS:Disabled="True"
+      DTS:DTSID="{A5BF2A20-5454-4F26-A166-843C4EEEFAA0}"
+      DTS:ExecutableType="Microsoft.SendMailTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Send the Report"
+      DTS:TaskContact="Send Mail Task; Microsoft Corporation; Microsoft SQL Server 2008 R2; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SendMailTask:SendMailTaskData
+          SendMailTask:SMTPServer="{584799FE-AF94-4627-B726-08A3575DAD1F}"
+          SendMailTask:From="your.email@accenture.com"
+          SendMailTask:To="3468_EmployeeReferral_Support@accenture.com"
+          SendMailTask:Subject="3468_SSIS_ODStoER Execution"
+          SendMailTask:MessageSource="3468_SSIS_ODStoER_CANDSTAT.dtsx completed execution" xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Start Log Task"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{D09B4419-98D1-4102-AFB0-E2CDC6B04F7A}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Start Log Task"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{C466292E-6F2C-4E08-B4FF-EC34723AFBD3}"
+          SQLTask:BypassPrepare="False"
+          SQLTask:SqlStatementSource="exec admin.sp_ExecutionLog 'RUNNING',?,null,null,?,?,?,?,?,?,null,null,null,null" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="User::DateExecution"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="7"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="1"
+            SQLTask:DtsVariableName="System::VersionBuild"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="131"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="2"
+            SQLTask:DtsVariableName="System::VersionMajor"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="131"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="3"
+            SQLTask:DtsVariableName="System::VersionMinor"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="131"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="4"
+            SQLTask:DtsVariableName="System::PackageName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="129"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="5"
+            SQLTask:DtsVariableName="System::ExecutionInstanceGUID"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="129"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="6"
+            SQLTask:DtsVariableName="System::TaskID"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="129"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{F2C26600-C9DD-4F26-ADA2-DDA1937402D1}"
+      DTS:From="Package\Get Last Processing Date"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Create Temp Tables" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{826A3B0E-D66C-4C13-9573-688F9B8D5198}"
+      DTS:From="Package\Create Temp Tables"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Candidate Status" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 10]"
+      DTS:CreationName=""
+      DTS:DTSID="{082EFDE3-98D4-4238-A46D-F7D5311BE153}"
+      DTS:From="Package\Send the Report"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 10"
+      DTS:To="Package\End Log Task" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 5]"
+      DTS:CreationName=""
+      DTS:DTSID="{2394759D-F4DA-4174-82DB-7EC6C1112DF2}"
+      DTS:From="Package\Candidate Status"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 5"
+      DTS:To="Package\Execute Stored Procedures" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 6]"
+      DTS:CreationName=""
+      DTS:DTSID="{30F133B5-4E9C-48E6-BC9C-164227A9B017}"
+      DTS:From="Package\Execute Stored Procedures"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 6"
+      DTS:To="Package\Delete Temp Tables" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 7]"
+      DTS:CreationName=""
+      DTS:DTSID="{0AB4464C-B60E-4EE5-90C2-D733A676DD0B}"
+      DTS:From="Package\Delete Temp Tables"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 7"
+      DTS:To="Package\Send the Report" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 8]"
+      DTS:CreationName=""
+      DTS:DTSID="{560CD6D9-58D4-476B-949E-B74A40AE8C5F}"
+      DTS:From="Package\Get Processing Date"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 8"
+      DTS:To="Package\Start Log Task" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 9]"
+      DTS:CreationName=""
+      DTS:DTSID="{9D56EC05-8E4C-47A2-BAD5-6DA9D82F67F5}"
+      DTS:From="Package\Start Log Task"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 9"
+      DTS:To="Package\Get Last Processing Date" />
+  </DTS:PrecedenceConstraints>
+  <DTS:EventHandlers>
+    <DTS:EventHandler
+      DTS:refId="Package.EventHandlers[OnError]"
+      DTS:CreationName="OnError"
+      DTS:DTSID="{E4C5BF9C-C03D-4C58-B678-E605EA36C4DD}"
+      DTS:EventID="676766964"
+      DTS:EventName="OnError"
+      DTS:LocaleID="-1">
+      <DTS:Variables>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:Description="The propagate property of the event"
+          DTS:DTSID="{0686D044-3CD9-4FD1-86DE-BFC9573D57C2}"
+          DTS:IncludeInDebugDump="6789"
+          DTS:Namespace="System"
+          DTS:ObjectName="Propagate">
+          <DTS:VariableValue
+            DTS:DataType="11">-1</DTS:VariableValue>
+        </DTS:Variable>
+      </DTS:Variables>
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package.EventHandlers[OnError]\Event Log Task"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{21345D6E-726A-46AD-8E02-264FABA8616D}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Event Log Task"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{C466292E-6F2C-4E08-B4FF-EC34723AFBD3}"
+              SQLTask:SqlStatementSource="Exec  admin.SP_EventLog @PackageName=?, @ExecutionInstanceId=?, @ExecutionId=?, @ErrorCode=?, @ErrorDescription=?, @TaskName=?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="System::PackageName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="1"
+                SQLTask:DtsVariableName="System::ExecutionInstanceGUID"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="3"
+                SQLTask:DtsVariableName="System::ErrorCode"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="131"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="4"
+                SQLTask:DtsVariableName="System::ErrorDescription"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="5"
+                SQLTask:DtsVariableName="System::TaskName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="2"
+                SQLTask:DtsVariableName="System::PackageID"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package.EventHandlers[OnError]\SMTP Notify Error"
+          DTS:CreationName="Microsoft.SendMailTask"
+          DTS:Description="Send Mail Task"
+          DTS:DisableEventHandlers="True"
+          DTS:DTSID="{513AB6AE-0A0D-43EA-A17D-D94D8C1E27AA}"
+          DTS:ExecutableType="Microsoft.SendMailTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SMTP Notify Error"
+          DTS:TaskContact="Send Mail Task; Microsoft Corporation; Microsoft SQL Server v9; © 2004 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:PropertyExpression
+            DTS:Name="MessageSource">"SSIS ERROR REPORT
+
+ 
+Execution Instance ID: " + (DT_WSTR, 255 ) @[System::ExecutionInstanceGUID] + "  
+Package: " +  (DT_WSTR, 255 ) @[System::PackageName] + " 
+Task: " +  (DT_WSTR, 255 ) @[System::SourceName] + "
+ErrorNumber: " + (DT_WSTR, 255 ) @[System::ErrorCode] + "
+ErrorMessage: " + (DT_WSTR, 2500 ) @[System::ErrorDescription]</DTS:PropertyExpression>
+          <DTS:PropertyExpression
+            DTS:Name="Subject">"SSIS ERROR IN: " + @[System::PackageName]</DTS:PropertyExpression>
+          <DTS:ObjectData>
+            <SendMailTask:SendMailTaskData
+              SendMailTask:SMTPServer="{584799FE-AF94-4627-B726-08A3575DAD1F}"
+              SendMailTask:From="your.email@accenture.com"
+              SendMailTask:To="3468_EmployeeReferral_Support@accenture.com"
+              SendMailTask:Subject="SSIS ERROR IN: 3468_SSIS_ODStoER_CANDSTAT"
+              SendMailTask:MessageSource="SSIS ERROR REPORT&#xA;&#xA; &#xA;Execution Instance ID: {909FD934-55EF-44B5-98B1-DF66EF28A21A}  &#xA;Package: 3468_SSIS_ODStoER_CANDSTAT &#xA;Task: &#xA;ErrorNumber: 0&#xA;ErrorMessage: " xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package.EventHandlers[OnError].PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{886F9556-DAF1-4215-822F-543D0BC66C25}"
+          DTS:From="Package.EventHandlers[OnError]\Event Log Task"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package.EventHandlers[OnError]\SMTP Notify Error" />
+      </DTS:PrecedenceConstraints>
+    </DTS:EventHandler>
+  </DTS:EventHandlers>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="64" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib">
+        <NodeLayout
+          Size="194,42"
+          Id="Package\Candidate Status\Process CandidateStatus"
+          TopLeft="15.5,4.84837091505278" />
+        <NodeLayout
+          Size="214,42"
+          Id="Package\Candidate Status\Update Last Processing Date"
+          TopLeft="5.50000000000001,107.5" />
+        <EdgeLayout
+          Id="Package\Candidate Status.PrecedenceConstraints[Constraint]"
+          TopLeft="112.5,46.8483709150528">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60.6516290849472"
+              Start="0,0"
+              End="0,53.1516290849472">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,53.1516290849472" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="225.333333333334,205.333333333334"
+          Size="225.333333333334,248"
+          Id="Package\Candidate Status"
+          TopLeft="650.791666558012,647.535061318233" />
+        <NodeLayout
+          Size="174.666666666667,42.6666666666667"
+          Id="Package\Create Temp Tables"
+          TopLeft="668.833333333333,518.166666666667" />
+        <NodeLayout
+          Size="173.333333333334,42"
+          Id="Package\Delete Temp Tables"
+          TopLeft="676.791666558012,1466.2017279849" />
+        <NodeLayout
+          Size="142,42"
+          Id="Package\End Log Task"
+          TopLeft="692.458333224679,1670.86839465157" />
+        <NodeLayout
+          Size="165.333333333334,42"
+          Id="Package\Execute Stored Procedures\Latest Progression"
+          TopLeft="8.83333333333333,5.5" />
+        <NodeLayout
+          Size="141.333333333334,42"
+          Id="Package\Execute Stored Procedures\Referral Tree"
+          TopLeft="20.8333333333333,107.5" />
+        <NodeLayout
+          Size="172,42"
+          Id="Package\Execute Stored Procedures\Referral Tree Count"
+          TopLeft="5.50000000000003,209.5" />
+        <NodeLayout
+          Size="165.333333333334,42"
+          Id="Package\Execute Stored Procedures\Referral Tree Json"
+          TopLeft="8.83333333333336,311.5" />
+        <EdgeLayout
+          Id="Package\Execute Stored Procedures.PrecedenceConstraints[Constraint]"
+          TopLeft="91.5,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Execute Stored Procedures.PrecedenceConstraints[Constraint 1]"
+          TopLeft="91.5,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Execute Stored Procedures.PrecedenceConstraints[Constraint 2]"
+          TopLeft="91.5,251.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="182.666666666667,408"
+          Size="182.666666666667,451.333333333334"
+          Id="Package\Execute Stored Procedures"
+          TopLeft="672.124999891346,954.868394651571" />
+        <NodeLayout
+          Size="158.666666666667,42.6666666666667"
+          Id="Package\Get Last Processing Date\CandidateStatus"
+          TopLeft="5.49999999999982,5.50000000000004" />
+        <NodeLayout
+          Size="174.666666666667,42.6666666666667"
+          Id="Package\Get Last Processing Date\UpdateReferralTree"
+          TopLeft="224.5,5.50000000000004" />
+        <NodeLayout
+          Size="180,42.6666666666667"
+          Id="Package\Get Last Processing Date\UpdateReferralCount"
+          TopLeft="459.833333333333,5.50000000000004" />
+        <NodeLayout
+          Size="225.333333333334,42.6666666666667"
+          Id="Package\Get Last Processing Date\UpdateReferralCountTreeJson"
+          TopLeft="700.166666666667,5.49999999999993" />
+        <NodeLayout
+          Size="160,42.6666666666667"
+          Id="Package\Get Last Processing Date\Get Current Date"
+          TopLeft="985.833333333333,5.49999999999993" />
+        <GroupLayout
+          Text="Group "
+          ParentId="Package\Get Last Processing Date"
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="1151.33333333334,103.333333333334"
+          Size="1151.33333333334,146"
+          Id="50160515-1122-4999-acdc-4af918c7c276"
+          TopLeft="5.5,5.49999999999989">
+          <GroupLayout.ChildrenIds>
+            <s:String>Package\Get Last Processing Date\CandidateStatus</s:String>
+            <s:String>Package\Get Last Processing Date\UpdateReferralTree</s:String>
+            <s:String>Package\Get Last Processing Date\UpdateReferralCount</s:String>
+            <s:String>Package\Get Last Processing Date\UpdateReferralCountTreeJson</s:String>
+            <s:String>Package\Get Last Processing Date\Get Current Date</s:String>
+          </GroupLayout.ChildrenIds>
+        </GroupLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="1162,206.666666666667"
+          Size="1162,249.333333333334"
+          Id="Package\Get Last Processing Date"
+          TopLeft="182.930555726298,187.833332925512" />
+        <NodeLayout
+          Size="174,42"
+          Id="Package\Get Processing Date"
+          TopLeft="669.166666666667,5.5" />
+        <NodeLayout
+          Size="156,42.6666666666667"
+          Id="Package\Send the Report"
+          TopLeft="685.458333224679,1567.51751744571" />
+        <NodeLayout
+          Size="146.666666666667,42"
+          Id="Package\Start Log Task"
+          TopLeft="682.833333333333,107.5" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="760.048611196482,437.166666258845">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,81.0000004078217"
+              Start="0,0"
+              End="0,73.5000004078217">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,73.5000004078217" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 10]"
+          TopLeft="763.458333224679,1610.18418411237">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60.6842105391979"
+              Start="0,0"
+              End="0,53.1842105391979">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,53.1842105391979" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 5]"
+          TopLeft="763.458333224679,895.53506131823">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,59.3333333333408"
+              Start="0,0"
+              End="0,51.8333333333408">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,51.8333333333408" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 6]"
+          TopLeft="763.458333224679,1406.2017279849">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,59.9999999999995"
+              Start="0,0"
+              End="0,52.4999999999995">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.4999999999995" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 7]"
+          TopLeft="763.458333224679,1508.2017279849">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,59.3157894608055"
+              Start="0,0"
+              End="0,51.8157894608055">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,51.8157894608055" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 8]"
+          TopLeft="756.166666666667,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 9]"
+          TopLeft="760.048611196482,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,38.3333329255119"
+              Start="0,0"
+              End="0,30.8333329255119">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30.8333329255119" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="759.812499945673,560.833333333334">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,86.7017279848998"
+              Start="0,0"
+              End="0,79.2017279848998">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,79.2017279848998" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <DtsEventHandler
+    design-time-name="Package.EventHandlers[OnError]">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="150.666666666667,42"
+          Id="Package.EventHandlers[OnError]\Event Log Task"
+          TopLeft="74.5,60" />
+        <NodeLayout
+          Size="136,44"
+          Id="Package.EventHandlers[OnError]\SMTP Notify Error"
+          TopLeft="60.8333333209157,150.066666674415" />
+        <EdgeLayout
+          Id="Package.EventHandlers[OnError].PrecedenceConstraints[Constraint]"
+          TopLeft="149.833333333333,102">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-21.0000000124176,48.0666666744153"
+              Start="0,0"
+              End="-21.0000000124176,40.5666666744153">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.0333333372076" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.0333333372076"
+                    Point2="0,24.0333333372076"
+                    Point3="-4,24.0333333372076" />
+                  <mssgle:LineSegment
+                    End="-17.0000000124176,24.0333333372076" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-17.0000000124176,24.0333333372076"
+                    Point2="-21.0000000124176,24.0333333372076"
+                    Point3="-21.0000000124176,28.0333333372076" />
+                  <mssgle:LineSegment
+                    End="-21.0000000124176,40.5666666744153" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </DtsEventHandler>
+  <TaskHost
+    design-time-name="Package\Candidate Status\Process CandidateStatus">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="165.333333333334,42"
+          Id="Package\Candidate Status\Process CandidateStatus\Get Candidate List"
+          TopLeft="291,47" />
+        <NodeLayout
+          Size="201.333333333334,42"
+          Id="Package\Candidate Status\Process CandidateStatus\Exec SaveMailInformation"
+          TopLeft="279,165" />
+        <EdgeLayout
+          Id="Package\Candidate Status\Process CandidateStatus.Paths[OLE DB Source Output]"
+          TopLeft="376.5,89">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="0,76"
+              Start="0,0"
+              End="0,68.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,68.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Candidate Status\Process CandidateStatus\Get Candidate List">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

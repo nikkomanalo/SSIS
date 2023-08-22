@@ -1,0 +1,2408 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="11/30/2017 1:58:40 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="CIOS-51412XM-LX"
+  DTS:CreatorName="DIR\john.del.t.manrique"
+  DTS:DTSID="{A2FBC634-EB2A-4FAF-A4E5-BC53A391D3DB}"
+  DTS:EnableConfig="True"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.170"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="3468_SSIS_ODStoER_REF"
+  DTS:PackageType="5"
+  DTS:VersionBuild="228"
+  DTS:VersionGUID="{D75062B2-0642-4566-98FA-BFA57B6EC2D4}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[2761_EnterpriseODS]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{F0C460A0-8DBA-4460-AB3B-FC6A25AA1A3D}"
+      DTS:ObjectName="2761_EnterpriseODS">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Retain="True"
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=3468-mi-dev-employeerefe-01.76c13d078b29.database.windows.net;Uid=3468_SSIS;Initial Catalog=2761_EnterpriseODS;Provider=SQLNCLI11.1;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Pwd"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAvFILFCrNfUyadrn3rzMxEgAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAAAC/3C9GLQ1tpGUWIvrSn2sAAAAAASAAACgAAAAEAAAAP+P7NMAIR9jPOI8YBiZy4kgAAAAZymLC8nf7vxDRXIMoBv7uMcGkCgB2Ir87PxMW6xY+6AUAAAAftvyOzgqLU1J1oQVkm78sw2E8k4</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[3468_EmploRefer]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{45AA4EE9-03CE-4A60-AE62-87D3883D61B9}"
+      DTS:ObjectName="3468_EmploRefer">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Retain="True"
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=3468-mi-dev-employeerefe-01.76c13d078b29.database.windows.net;Uid=3468_SSIS;Initial Catalog=3468_EmployeeReferrals;Provider=SQLNCLI11.1;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Pwd"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAvFILFCrNfUyadrn3rzMxEgAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAABiazq/wUCXY+gCLDVJGA84AAAAAASAAACgAAAAEAAAAMYMTpgXcerBWcUfYexrmLIgAAAAsPspzSlcnBc6f4PzJY1b8Itkc20mvl0yv6x7Jk8w4ZgUAAAAbw2IaXBHGg98qX5D6/plVwVPUGk</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[AdminDB]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{0B86BBAD-FB79-4371-A29C-CD24CF95213B}"
+      DTS:ObjectName="AdminDB">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Retain="True"
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=3468-mi-dev-employeerefe-01.76c13d078b29.database.windows.net;Uid=3468_SSIS;Initial Catalog=2751_EnterRepor_SSISAdmin;Provider=SQLNCLI11.1;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Pwd"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAvFILFCrNfUyadrn3rzMxEgAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAAC9qWBoST7Icm9qKG1QgkvoAAAAAASAAACgAAAAEAAAAHqbRZtM2HtxoBg3shEtI8IgAAAAt8QJzEmkXV+5PwB19mdRNmoZm3skIc+KtquvxI616bUUAAAAdsFBZ4kWLwvAng4TMUuY42hbq80</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SMTPServer]"
+      DTS:CreationName="SMTP"
+      DTS:DTSID="{8D0CA448-1649-4551-968E-205C96F640CE}"
+      DTS:ObjectName="SMTPServer">
+      <DTS:ObjectData>
+        <SmtpConnectionManager
+          ConnectionString="SmtpServer=AMRINT.SMTP.ACCENTURE.COM;UseWindowsAuthentication=True;EnableSsl=False;"
+          ConnectByProxy="False" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Configurations>
+    <DTS:Configuration
+      DTS:ConfigurationString="&quot;AdminDB&quot;;&quot;[admin].[PackageConfiguration]&quot;;&quot;3468_SSIS_ODStoER&quot;;"
+      DTS:ConfigurationType="7"
+      DTS:CreationName=""
+      DTS:DTSID="{8215620A-8866-4098-862F-2C6843BDB138}"
+      DTS:ObjectName="3468_SSIS_ODStoER" />
+    <DTS:Configuration
+      DTS:ConfigurationString="SSISAdminConnStr"
+      DTS:ConfigurationType="2"
+      DTS:ConfigurationVariable="\Package.Connections[AdminDB].Properties[ConnectionString]"
+      DTS:CreationName=""
+      DTS:DTSID="{DE69CC4E-9171-49CF-A591-45F1FBED1639}"
+      DTS:ObjectName="SSISAdminConnStr" />
+  </DTS:Configurations>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{3879268B-A28A-4ADF-8749-37DD6895175F}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="DateExecution">
+      <DTS:VariableValue
+        DTS:DataType="7">1/1/1900</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{61A824C9-1D9D-418E-B565-9A08C9EB05D4}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="dtCandidateLastProcDate">
+      <DTS:VariableValue
+        DTS:DataType="7">1/1/1900</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{92BA8E64-49C0-4EB9-B599-6F268787207A}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="dtCandidateStatusLastProcDate">
+      <DTS:VariableValue
+        DTS:DataType="7">1/1/1900</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{29F794E4-6C1B-473B-A576-B38A420D8B48}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="dtCurrent">
+      <DTS:VariableValue
+        DTS:DataType="7">1/1/1900</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{A931A444-B209-4C70-B8C7-CAEBA2A42841}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="dtLatestProgDate">
+      <DTS:VariableValue
+        DTS:DataType="7">1/1/1900</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{8A918CD9-1D37-427D-85CB-49CF429DB978}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="dtReferrerLastProcDate">
+      <DTS:VariableValue
+        DTS:DataType="7">1/1/1900</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{C24FE8DF-9B5A-4B11-AEDE-CFBE00CDE7E6}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="dtRequisitionLastProcDate">
+      <DTS:VariableValue
+        DTS:DataType="7">1/1/1900</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{210D3EB2-7FC2-4D93-841C-F7BC49AC3DEA}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="dtUpdateReferralCount">
+      <DTS:VariableValue
+        DTS:DataType="7">1/1/1900</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{A544FF34-E131-4B4E-9448-99B1AB3E6FC0}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="dtUpdateReferralTree">
+      <DTS:VariableValue
+        DTS:DataType="7">1/1/1900</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{7B65C387-DAA3-49EC-9EA9-7A6C2C2BDCED}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="dtUpdateReferralTreeJSON">
+      <DTS:VariableValue
+        DTS:DataType="7">1/1/1900</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{310A1E12-25AD-4865-B23F-35C7D31B1190}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="objCandidate">
+      <DTS:VariableValue
+        DTS:DataSubType="ManagedSerializable"
+        DTS:DataType="13">
+        <SOAP-ENV:Envelope xmlns:clr="http://schemas.microsoft.com/soap/encoding/clr/1.0" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+          <SOAP-ENV:Body>
+            <xsd:anyType
+              id="ref-1"></xsd:anyType>
+          </SOAP-ENV:Body>
+        </SOAP-ENV:Envelope>
+      </DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{AB50260E-AED3-4218-8747-5DB8AAFB4EE3}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="RequisitionRetryCount">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{191009B2-9E14-4430-B52D-CEAF9B4F11B9}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="RequisitionRetryIntervalInSecond">
+      <DTS:VariableValue
+        DTS:DataType="3">3</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{68EDFDD8-6E69-4344-B2C1-306120780430}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="RequisitionRetryMaxCount">
+      <DTS:VariableValue
+        DTS:DataType="3">5</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{452E94B8-4C54-4A78-AFEE-E39093C4854E}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="strGetProcessingDateTable">
+      <DTS:VariableValue
+        DTS:DataType="8">gbl_TableName</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{3BCC36F0-4465-4224-86BF-5B007EC7743A}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="tblCandName">
+      <DTS:VariableValue
+        DTS:DataType="8">##Candidate</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{4FFA288C-EEED-47C2-8123-423B08506AE5}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="tblReferrer">
+      <DTS:VariableValue
+        DTS:DataType="8">##Referrer</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{56A3DE83-CC47-4CC6-9E60-F35A341C9947}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="tblRequisition">
+      <DTS:VariableValue
+        DTS:DataType="8">##Requisition</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Create Temp Tables"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Create temp table for Requisition"
+      DTS:DTSID="{CFB85878-33C6-4596-B3B3-1B400C73B072}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Create Temp Tables"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; Microsoft SQL Server 2008 R2; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{45AA4EE9-03CE-4A60-AE62-87D3883D61B9}"
+          SQLTask:BypassPrepare="False"
+          SQLTask:SqlStatementSource="--initially temporary tables are eliminated in case there&#xA;IF object_id('tempdb..##Referrer') IS NOT NULL &#xA;BEGIN &#xA; DROP TABLE ##Referrer &#xA;END&#xA;&#xA;CREATE TABLE ##Referrer(&#xA;&#x9;[PeopleKey] [int] NOT NULL,&#xA;&#x9;[EmployeeId] [varchar](50) NULL,&#xA;&#x9;[EnterpriseId] [varchar](100) NULL,&#xA;&#x9;[FirstNm] [nvarchar](255) NULL,&#xA;&#x9;[LastNm] [nvarchar](255) NULL,&#xA;&#x9;[CreateUserId] [varchar](50) NULL,&#xA;&#x9;[CreateDttm] [datetime] NULL,&#xA;&#x9;[UpdateUserId] [varchar](50) NULL,&#xA;&#x9;[UpdateDttm] [datetime] NULL&#xA;) &#xA; &#xA;GO" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Delete Temp Tables"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Create temp table for Requisition"
+      DTS:DTSID="{9214040E-D549-40F5-B0F0-043127A14B19}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Delete Temp Tables"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; Microsoft SQL Server 2008 R2; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{45AA4EE9-03CE-4A60-AE62-87D3883D61B9}"
+          SQLTask:BypassPrepare="False"
+          SQLTask:SqlStatementSource="--initially temporary tables are eliminated in case there&#xA;IF object_id('tempdb..##Referrer') IS NOT NULL &#xA;BEGIN &#xA; DROP TABLE ##Referrer &#xA;END " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\End Log Task"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{7183BACC-A197-4A47-A97D-1909D087242C}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="End Log Task"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{0B86BBAD-FB79-4371-A29C-CD24CF95213B}"
+          SQLTask:BypassPrepare="False"
+          SQLTask:SqlStatementSource="exec admin.sp_ExecutionLog 'SUCCESS',?,null,null,?,?,?,?,?,?,null,null,null,0" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="User::DateExecution"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="7"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="1"
+            SQLTask:DtsVariableName="System::VersionBuild"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="131"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="2"
+            SQLTask:DtsVariableName="System::VersionMajor"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="131"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="3"
+            SQLTask:DtsVariableName="System::VersionMinor"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="131"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="4"
+            SQLTask:DtsVariableName="System::PackageName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="129"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="5"
+            SQLTask:DtsVariableName="System::ExecutionInstanceGUID"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="129"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="6"
+            SQLTask:DtsVariableName="System::TaskID"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="129"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Get Last Processing Date"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{F79B5095-37A7-4986-B282-2C5108FE1765}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Get Last Processing Date">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Get Last Processing Date\Get Current Date"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{3A545CC1-A232-434B-9E95-5FF81EE80726}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Get Current Date"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{45AA4EE9-03CE-4A60-AE62-87D3883D61B9}"
+              SQLTask:SqlStatementSource="SELECT CONVERT(DATE,GETDATE())"
+              SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ResultBinding
+                SQLTask:ResultName="0"
+                SQLTask:DtsVariableName="User::dtCurrent" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Get Last Processing Date\Referrer"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Referrer"
+          DTS:DTSID="{27738917-4DAD-4C02-BE52-3E257E2AEF36}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Referrer"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{45AA4EE9-03CE-4A60-AE62-87D3883D61B9}"
+              SQLTask:SqlStatementSource="select convert(date,a.DecodeTxt) from empref.codedetail a&#xA;join empref.codedetail b&#xA;on a.parentcodetxt = b.codetxt&#xA;and a.ParentCategoryNbr = b.CategoryNbr&#xA;join empref.codeheader c&#xA;on c.categorynbr = b.categorynbr&#xA;where &#xA;c.categorydesc = 'Last Processing Date'&#xA;and b.DecodeTxt = 'Referrer'"
+              SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ResultBinding
+                SQLTask:ResultName="0"
+                SQLTask:DtsVariableName="User::dtReferrerLastProcDate" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Get Processing Date"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Get Processing Date"
+      DTS:DTSID="{271297ED-B3ED-4044-BC8A-804CC9509B38}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Get Processing Date"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{0B86BBAD-FB79-4371-A29C-CD24CF95213B}"
+          SQLTask:BypassPrepare="False"
+          SQLTask:SqlStatementSource="SELECT ProcessingDttm FROM [admin].[ProcessingDate] with (nolock) where TableNm = ?"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="0"
+            SQLTask:DtsVariableName="User::DateExecution" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="User::strGetProcessingDateTable"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="129"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Referrer"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{1949879F-3EDA-4982-A031-4E907DE1136D}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Referrer">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Referrer\Perform Batch Update"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{F35FBF99-A0CE-43B8-AF6F-026B47A26F3F}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Perform Batch Update"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{45AA4EE9-03CE-4A60-AE62-87D3883D61B9}"
+              SQLTask:SqlStatementSource="UPDATE A&#xA;SET&#xA;a.[PeopleKey] = b.[PeopleKey],&#xA;a.[EmployeeId] = b.[EmployeeId],&#xA;a.[EnterpriseId] = b.[EnterpriseId],&#xA;a.[FirstNm] = b.[FirstNm],&#xA;a.[LastNm] = b.[LastNm],&#xA;a.[CreateUserId] = b.[CreateUserId],&#xA;a.[CreateDttm] = b.[CreateDttm],&#xA;a.[UpdateUserId] = b.[UpdateUserId],&#xA;a.[UpdateDttm] = b.[UpdateDttm]&#xA;FROM EMPREF.Referrer a WITH (NOLOCK)&#xA;JOIN ##Referrer b WITH (NOLOCK)&#xA;on A.PeopleKey = b.PeopleKey" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Referrer\Process Referrer"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{CE0C0246-AA0B-4900-A1D5-A628E90B9D93}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Process Referrer"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Referrer\Process Referrer\Conditional Split"
+                  componentClassID="Microsoft.ConditionalSplit"
+                  contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+                  name="Conditional Split"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\Referrer\Process Referrer\Conditional Split.Inputs[Conditional Split Input]"
+                      description="Input to the Conditional Split Transformation"
+                      name="Conditional Split Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Referrer\Process Referrer\Conditional Split.Inputs[Conditional Split Input].Columns[DestPeopleKey]"
+                          cachedDataType="i4"
+                          cachedName="DestPeopleKey"
+                          lineageId="Package\Referrer\Process Referrer\Lookup.Outputs[Lookup Match Output].Columns[DestPeopleKey]" />
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Referrer\Process Referrer\Conditional Split.Outputs[Insert]"
+                      description="Output 1 of the Conditional Split Transformation"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      exclusionGroup="1"
+                      name="Insert"
+                      synchronousInputId="Package\Referrer\Process Referrer\Conditional Split.Inputs[Conditional Split Input]"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                          name="Expression">[ISNULL](#{Package\Referrer\Process Referrer\Lookup.Outputs[Lookup Match Output].Columns[DestPeopleKey]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Specifies the friendly version of the expression. This expression version uses column names."
+                          expressionType="Notify"
+                          name="FriendlyExpression">ISNULL(DestPeopleKey)</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                          name="EvaluationOrder">0</property>
+                      </properties>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Referrer\Process Referrer\Conditional Split.Outputs[Update]"
+                      description="Output 2 of the Conditional Split Transformation"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      exclusionGroup="1"
+                      name="Update"
+                      synchronousInputId="Package\Referrer\Process Referrer\Conditional Split.Inputs[Conditional Split Input]"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                          name="Expression">![ISNULL](#{Package\Referrer\Process Referrer\Lookup.Outputs[Lookup Match Output].Columns[DestPeopleKey]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Specifies the friendly version of the expression. This expression version uses column names."
+                          expressionType="Notify"
+                          name="FriendlyExpression">!ISNULL(DestPeopleKey)</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                          name="EvaluationOrder">1</property>
+                      </properties>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Referrer\Process Referrer\Conditional Split.Outputs[Conditional Split Default Output]"
+                      description="Default Output of the Conditional Split Transformation"
+                      exclusionGroup="1"
+                      name="Conditional Split Default Output"
+                      synchronousInputId="Package\Referrer\Process Referrer\Conditional Split.Inputs[Conditional Split Input]">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsDefaultOut">true</property>
+                      </properties>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Referrer\Process Referrer\Conditional Split.Outputs[Conditional Split Error Output]"
+                      description="Error Output of the Conditional Split Transformation"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Conditional Split Error Output"
+                      synchronousInputId="Package\Referrer\Process Referrer\Conditional Split.Inputs[Conditional Split Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Referrer\Process Referrer\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Referrer\Process Referrer\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Referrer\Process Referrer\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Referrer\Process Referrer\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Referrer\Process Referrer\Get Referrer List"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="Get Referrer List"
+                  usesDispositions="true"
+                  validateExternalMetadata="False"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset"></property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select PeopleKey
+                                            ,EmployeeId
+                                            ,EnterpriseId
+                                            ,FirstNm
+                                            ,LastNm
+                                            ,CreateUserId
+                                            ,CreateDttm
+                                            ,UpdateUserId
+                                            ,UpdateDttm from empref.referrer with (nolock)
+where createdttm is not null
+and updatedttm &gt; ?</property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">2</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping">"0:Input",{8A918CD9-1D37-427D-85CB-49CF429DB978};</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Referrer\Process Referrer\Get Referrer List.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[2761_EnterpriseODS]"
+                      connectionManagerRefId="Package.ConnectionManagers[2761_EnterpriseODS]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Referrer\Process Referrer\Get Referrer List.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Referrer\Process Referrer\Get Referrer List.Outputs[OLE DB Source Output].Columns[PeopleKey]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Referrer\Process Referrer\Get Referrer List.Outputs[OLE DB Source Output].ExternalColumns[PeopleKey]"
+                          lineageId="Package\Referrer\Process Referrer\Get Referrer List.Outputs[OLE DB Source Output].Columns[PeopleKey]"
+                          name="PeopleKey"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Referrer\Process Referrer\Get Referrer List.Outputs[OLE DB Source Output].Columns[EnterpriseId]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Referrer\Process Referrer\Get Referrer List.Outputs[OLE DB Source Output].ExternalColumns[EnterpriseId]"
+                          length="100"
+                          lineageId="Package\Referrer\Process Referrer\Get Referrer List.Outputs[OLE DB Source Output].Columns[EnterpriseId]"
+                          name="EnterpriseId"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Referrer\Process Referrer\Get Referrer List.Outputs[OLE DB Source Output].Columns[FirstNm]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Referrer\Process Referrer\Get Referrer List.Outputs[OLE DB Source Output].ExternalColumns[FirstNm]"
+                          length="255"
+                          lineageId="Package\Referrer\Process Referrer\Get Referrer List.Outputs[OLE DB Source Output].Columns[FirstNm]"
+                          name="FirstNm"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Referrer\Process Referrer\Get Referrer List.Outputs[OLE DB Source Output].Columns[LastNm]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Referrer\Process Referrer\Get Referrer List.Outputs[OLE DB Source Output].ExternalColumns[LastNm]"
+                          length="255"
+                          lineageId="Package\Referrer\Process Referrer\Get Referrer List.Outputs[OLE DB Source Output].Columns[LastNm]"
+                          name="LastNm"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Referrer\Process Referrer\Get Referrer List.Outputs[OLE DB Source Output].Columns[CreateUserId]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Referrer\Process Referrer\Get Referrer List.Outputs[OLE DB Source Output].ExternalColumns[CreateUserId]"
+                          length="50"
+                          lineageId="Package\Referrer\Process Referrer\Get Referrer List.Outputs[OLE DB Source Output].Columns[CreateUserId]"
+                          name="CreateUserId"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Referrer\Process Referrer\Get Referrer List.Outputs[OLE DB Source Output].Columns[CreateDttm]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Referrer\Process Referrer\Get Referrer List.Outputs[OLE DB Source Output].ExternalColumns[CreateDttm]"
+                          lineageId="Package\Referrer\Process Referrer\Get Referrer List.Outputs[OLE DB Source Output].Columns[CreateDttm]"
+                          name="CreateDttm"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Referrer\Process Referrer\Get Referrer List.Outputs[OLE DB Source Output].Columns[UpdateUserId]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Referrer\Process Referrer\Get Referrer List.Outputs[OLE DB Source Output].ExternalColumns[UpdateUserId]"
+                          length="50"
+                          lineageId="Package\Referrer\Process Referrer\Get Referrer List.Outputs[OLE DB Source Output].Columns[UpdateUserId]"
+                          name="UpdateUserId"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Referrer\Process Referrer\Get Referrer List.Outputs[OLE DB Source Output].Columns[UpdateDttm]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Referrer\Process Referrer\Get Referrer List.Outputs[OLE DB Source Output].ExternalColumns[UpdateDttm]"
+                          lineageId="Package\Referrer\Process Referrer\Get Referrer List.Outputs[OLE DB Source Output].Columns[UpdateDttm]"
+                          name="UpdateDttm"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Referrer\Process Referrer\Get Referrer List.Outputs[OLE DB Source Output].Columns[EmployeeId]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Referrer\Process Referrer\Get Referrer List.Outputs[OLE DB Source Output].ExternalColumns[EmployeeId]"
+                          length="50"
+                          lineageId="Package\Referrer\Process Referrer\Get Referrer List.Outputs[OLE DB Source Output].Columns[EmployeeId]"
+                          name="EmployeeId"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Referrer\Process Referrer\Get Referrer List.Outputs[OLE DB Source Output].ExternalColumns[PeopleKey]"
+                          dataType="i4"
+                          name="PeopleKey" />
+                        <externalMetadataColumn
+                          refId="Package\Referrer\Process Referrer\Get Referrer List.Outputs[OLE DB Source Output].ExternalColumns[EnterpriseId]"
+                          codePage="1252"
+                          dataType="str"
+                          length="100"
+                          name="EnterpriseId" />
+                        <externalMetadataColumn
+                          refId="Package\Referrer\Process Referrer\Get Referrer List.Outputs[OLE DB Source Output].ExternalColumns[FirstNm]"
+                          dataType="wstr"
+                          length="255"
+                          name="FirstNm" />
+                        <externalMetadataColumn
+                          refId="Package\Referrer\Process Referrer\Get Referrer List.Outputs[OLE DB Source Output].ExternalColumns[LastNm]"
+                          dataType="wstr"
+                          length="255"
+                          name="LastNm" />
+                        <externalMetadataColumn
+                          refId="Package\Referrer\Process Referrer\Get Referrer List.Outputs[OLE DB Source Output].ExternalColumns[CreateUserId]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="CreateUserId" />
+                        <externalMetadataColumn
+                          refId="Package\Referrer\Process Referrer\Get Referrer List.Outputs[OLE DB Source Output].ExternalColumns[CreateDttm]"
+                          dataType="dbTimeStamp"
+                          name="CreateDttm" />
+                        <externalMetadataColumn
+                          refId="Package\Referrer\Process Referrer\Get Referrer List.Outputs[OLE DB Source Output].ExternalColumns[UpdateUserId]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="UpdateUserId" />
+                        <externalMetadataColumn
+                          refId="Package\Referrer\Process Referrer\Get Referrer List.Outputs[OLE DB Source Output].ExternalColumns[UpdateDttm]"
+                          dataType="dbTimeStamp"
+                          name="UpdateDttm" />
+                        <externalMetadataColumn
+                          refId="Package\Referrer\Process Referrer\Get Referrer List.Outputs[OLE DB Source Output].ExternalColumns[EmployeeId]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="EmployeeId" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Referrer\Process Referrer\Get Referrer List.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Referrer\Process Referrer\Get Referrer List.Outputs[OLE DB Source Error Output].Columns[PeopleKey]"
+                          dataType="i4"
+                          lineageId="Package\Referrer\Process Referrer\Get Referrer List.Outputs[OLE DB Source Error Output].Columns[PeopleKey]"
+                          name="PeopleKey" />
+                        <outputColumn
+                          refId="Package\Referrer\Process Referrer\Get Referrer List.Outputs[OLE DB Source Error Output].Columns[EmployeeId]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\Referrer\Process Referrer\Get Referrer List.Outputs[OLE DB Source Error Output].Columns[EmployeeId]"
+                          name="EmployeeId" />
+                        <outputColumn
+                          refId="Package\Referrer\Process Referrer\Get Referrer List.Outputs[OLE DB Source Error Output].Columns[EnterpriseId]"
+                          codePage="1252"
+                          dataType="str"
+                          length="100"
+                          lineageId="Package\Referrer\Process Referrer\Get Referrer List.Outputs[OLE DB Source Error Output].Columns[EnterpriseId]"
+                          name="EnterpriseId" />
+                        <outputColumn
+                          refId="Package\Referrer\Process Referrer\Get Referrer List.Outputs[OLE DB Source Error Output].Columns[FirstNm]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Referrer\Process Referrer\Get Referrer List.Outputs[OLE DB Source Error Output].Columns[FirstNm]"
+                          name="FirstNm" />
+                        <outputColumn
+                          refId="Package\Referrer\Process Referrer\Get Referrer List.Outputs[OLE DB Source Error Output].Columns[LastNm]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Referrer\Process Referrer\Get Referrer List.Outputs[OLE DB Source Error Output].Columns[LastNm]"
+                          name="LastNm" />
+                        <outputColumn
+                          refId="Package\Referrer\Process Referrer\Get Referrer List.Outputs[OLE DB Source Error Output].Columns[CreateUserId]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\Referrer\Process Referrer\Get Referrer List.Outputs[OLE DB Source Error Output].Columns[CreateUserId]"
+                          name="CreateUserId" />
+                        <outputColumn
+                          refId="Package\Referrer\Process Referrer\Get Referrer List.Outputs[OLE DB Source Error Output].Columns[CreateDttm]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\Referrer\Process Referrer\Get Referrer List.Outputs[OLE DB Source Error Output].Columns[CreateDttm]"
+                          name="CreateDttm" />
+                        <outputColumn
+                          refId="Package\Referrer\Process Referrer\Get Referrer List.Outputs[OLE DB Source Error Output].Columns[UpdateUserId]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\Referrer\Process Referrer\Get Referrer List.Outputs[OLE DB Source Error Output].Columns[UpdateUserId]"
+                          name="UpdateUserId" />
+                        <outputColumn
+                          refId="Package\Referrer\Process Referrer\Get Referrer List.Outputs[OLE DB Source Error Output].Columns[UpdateDttm]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\Referrer\Process Referrer\Get Referrer List.Outputs[OLE DB Source Error Output].Columns[UpdateDttm]"
+                          name="UpdateDttm" />
+                        <outputColumn
+                          refId="Package\Referrer\Process Referrer\Get Referrer List.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Referrer\Process Referrer\Get Referrer List.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Referrer\Process Referrer\Get Referrer List.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Referrer\Process Referrer\Get Referrer List.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Referrer\Process Referrer\Insert to ER Table"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="Insert to ER Table"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[EmpRef].[Referrer]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Referrer\Process Referrer\Insert to ER Table.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[3468_EmploRefer]"
+                      connectionManagerRefId="Package.ConnectionManagers[3468_EmploRefer]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Referrer\Process Referrer\Insert to ER Table.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Referrer\Process Referrer\Insert to ER Table.Inputs[OLE DB Destination Input].Columns[PeopleKey]"
+                          cachedDataType="i4"
+                          cachedName="PeopleKey"
+                          externalMetadataColumnId="Package\Referrer\Process Referrer\Insert to ER Table.Inputs[OLE DB Destination Input].ExternalColumns[PeopleKey]"
+                          lineageId="Package\Referrer\Process Referrer\Get Referrer List.Outputs[OLE DB Source Output].Columns[PeopleKey]" />
+                        <inputColumn
+                          refId="Package\Referrer\Process Referrer\Insert to ER Table.Inputs[OLE DB Destination Input].Columns[EnterpriseId]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="100"
+                          cachedName="EnterpriseId"
+                          externalMetadataColumnId="Package\Referrer\Process Referrer\Insert to ER Table.Inputs[OLE DB Destination Input].ExternalColumns[EnterpriseId]"
+                          lineageId="Package\Referrer\Process Referrer\Get Referrer List.Outputs[OLE DB Source Output].Columns[EnterpriseId]" />
+                        <inputColumn
+                          refId="Package\Referrer\Process Referrer\Insert to ER Table.Inputs[OLE DB Destination Input].Columns[FirstNm]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="FirstNm"
+                          externalMetadataColumnId="Package\Referrer\Process Referrer\Insert to ER Table.Inputs[OLE DB Destination Input].ExternalColumns[FirstNm]"
+                          lineageId="Package\Referrer\Process Referrer\Get Referrer List.Outputs[OLE DB Source Output].Columns[FirstNm]" />
+                        <inputColumn
+                          refId="Package\Referrer\Process Referrer\Insert to ER Table.Inputs[OLE DB Destination Input].Columns[LastNm]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="LastNm"
+                          externalMetadataColumnId="Package\Referrer\Process Referrer\Insert to ER Table.Inputs[OLE DB Destination Input].ExternalColumns[LastNm]"
+                          lineageId="Package\Referrer\Process Referrer\Get Referrer List.Outputs[OLE DB Source Output].Columns[LastNm]" />
+                        <inputColumn
+                          refId="Package\Referrer\Process Referrer\Insert to ER Table.Inputs[OLE DB Destination Input].Columns[CreateUserId]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="CreateUserId"
+                          externalMetadataColumnId="Package\Referrer\Process Referrer\Insert to ER Table.Inputs[OLE DB Destination Input].ExternalColumns[CreateUserId]"
+                          lineageId="Package\Referrer\Process Referrer\Get Referrer List.Outputs[OLE DB Source Output].Columns[CreateUserId]" />
+                        <inputColumn
+                          refId="Package\Referrer\Process Referrer\Insert to ER Table.Inputs[OLE DB Destination Input].Columns[CreateDttm]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="CreateDttm"
+                          externalMetadataColumnId="Package\Referrer\Process Referrer\Insert to ER Table.Inputs[OLE DB Destination Input].ExternalColumns[CreateDttm]"
+                          lineageId="Package\Referrer\Process Referrer\Get Referrer List.Outputs[OLE DB Source Output].Columns[CreateDttm]" />
+                        <inputColumn
+                          refId="Package\Referrer\Process Referrer\Insert to ER Table.Inputs[OLE DB Destination Input].Columns[UpdateUserId]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="UpdateUserId"
+                          externalMetadataColumnId="Package\Referrer\Process Referrer\Insert to ER Table.Inputs[OLE DB Destination Input].ExternalColumns[UpdateUserId]"
+                          lineageId="Package\Referrer\Process Referrer\Get Referrer List.Outputs[OLE DB Source Output].Columns[UpdateUserId]" />
+                        <inputColumn
+                          refId="Package\Referrer\Process Referrer\Insert to ER Table.Inputs[OLE DB Destination Input].Columns[UpdateDttm]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="UpdateDttm"
+                          externalMetadataColumnId="Package\Referrer\Process Referrer\Insert to ER Table.Inputs[OLE DB Destination Input].ExternalColumns[UpdateDttm]"
+                          lineageId="Package\Referrer\Process Referrer\Get Referrer List.Outputs[OLE DB Source Output].Columns[UpdateDttm]" />
+                        <inputColumn
+                          refId="Package\Referrer\Process Referrer\Insert to ER Table.Inputs[OLE DB Destination Input].Columns[EmployeeId]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="EmployeeId"
+                          externalMetadataColumnId="Package\Referrer\Process Referrer\Insert to ER Table.Inputs[OLE DB Destination Input].ExternalColumns[EmployeeId]"
+                          lineageId="Package\Referrer\Process Referrer\Get Referrer List.Outputs[OLE DB Source Output].Columns[EmployeeId]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Referrer\Process Referrer\Insert to ER Table.Inputs[OLE DB Destination Input].ExternalColumns[PeopleKey]"
+                          dataType="i4"
+                          name="PeopleKey" />
+                        <externalMetadataColumn
+                          refId="Package\Referrer\Process Referrer\Insert to ER Table.Inputs[OLE DB Destination Input].ExternalColumns[EnterpriseId]"
+                          codePage="1252"
+                          dataType="str"
+                          length="100"
+                          name="EnterpriseId" />
+                        <externalMetadataColumn
+                          refId="Package\Referrer\Process Referrer\Insert to ER Table.Inputs[OLE DB Destination Input].ExternalColumns[FirstNm]"
+                          dataType="wstr"
+                          length="255"
+                          name="FirstNm" />
+                        <externalMetadataColumn
+                          refId="Package\Referrer\Process Referrer\Insert to ER Table.Inputs[OLE DB Destination Input].ExternalColumns[LastNm]"
+                          dataType="wstr"
+                          length="255"
+                          name="LastNm" />
+                        <externalMetadataColumn
+                          refId="Package\Referrer\Process Referrer\Insert to ER Table.Inputs[OLE DB Destination Input].ExternalColumns[CreateUserId]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="CreateUserId" />
+                        <externalMetadataColumn
+                          refId="Package\Referrer\Process Referrer\Insert to ER Table.Inputs[OLE DB Destination Input].ExternalColumns[CreateDttm]"
+                          dataType="dbTimeStamp"
+                          name="CreateDttm" />
+                        <externalMetadataColumn
+                          refId="Package\Referrer\Process Referrer\Insert to ER Table.Inputs[OLE DB Destination Input].ExternalColumns[UpdateUserId]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="UpdateUserId" />
+                        <externalMetadataColumn
+                          refId="Package\Referrer\Process Referrer\Insert to ER Table.Inputs[OLE DB Destination Input].ExternalColumns[UpdateDttm]"
+                          dataType="dbTimeStamp"
+                          name="UpdateDttm" />
+                        <externalMetadataColumn
+                          refId="Package\Referrer\Process Referrer\Insert to ER Table.Inputs[OLE DB Destination Input].ExternalColumns[TotalPoints]"
+                          dataType="i4"
+                          name="TotalPoints" />
+                        <externalMetadataColumn
+                          refId="Package\Referrer\Process Referrer\Insert to ER Table.Inputs[OLE DB Destination Input].ExternalColumns[RankNumber]"
+                          dataType="i4"
+                          name="RankNumber" />
+                        <externalMetadataColumn
+                          refId="Package\Referrer\Process Referrer\Insert to ER Table.Inputs[OLE DB Destination Input].ExternalColumns[ReferralCount]"
+                          dataType="i4"
+                          name="ReferralCount" />
+                        <externalMetadataColumn
+                          refId="Package\Referrer\Process Referrer\Insert to ER Table.Inputs[OLE DB Destination Input].ExternalColumns[EmployeeId]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="EmployeeId" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Referrer\Process Referrer\Insert to ER Table.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Referrer\Process Referrer\Insert to ER Table.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Referrer\Process Referrer\Insert to ER Table.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Referrer\Process Referrer\Insert to ER Table.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Referrer\Process Referrer\Insert to ER Table.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Referrer\Process Referrer\Insert to ER Table.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Referrer\Process Referrer\Insert to temp table for batch update"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="Insert to temp table for batch update"
+                  usesDispositions="true"
+                  validateExternalMetadata="False"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset"></property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable">User::tblReferrer</property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">1</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Referrer\Process Referrer\Insert to temp table for batch update.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[3468_EmploRefer]"
+                      connectionManagerRefId="Package.ConnectionManagers[3468_EmploRefer]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Referrer\Process Referrer\Insert to temp table for batch update.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Referrer\Process Referrer\Insert to temp table for batch update.Inputs[OLE DB Destination Input].Columns[PeopleKey]"
+                          cachedDataType="i4"
+                          cachedName="PeopleKey"
+                          externalMetadataColumnId="Package\Referrer\Process Referrer\Insert to temp table for batch update.Inputs[OLE DB Destination Input].ExternalColumns[PeopleKey]"
+                          lineageId="Package\Referrer\Process Referrer\Get Referrer List.Outputs[OLE DB Source Output].Columns[PeopleKey]" />
+                        <inputColumn
+                          refId="Package\Referrer\Process Referrer\Insert to temp table for batch update.Inputs[OLE DB Destination Input].Columns[EnterpriseId]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="100"
+                          cachedName="EnterpriseId"
+                          externalMetadataColumnId="Package\Referrer\Process Referrer\Insert to temp table for batch update.Inputs[OLE DB Destination Input].ExternalColumns[EnterpriseId]"
+                          lineageId="Package\Referrer\Process Referrer\Get Referrer List.Outputs[OLE DB Source Output].Columns[EnterpriseId]" />
+                        <inputColumn
+                          refId="Package\Referrer\Process Referrer\Insert to temp table for batch update.Inputs[OLE DB Destination Input].Columns[FirstNm]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="FirstNm"
+                          externalMetadataColumnId="Package\Referrer\Process Referrer\Insert to temp table for batch update.Inputs[OLE DB Destination Input].ExternalColumns[FirstNm]"
+                          lineageId="Package\Referrer\Process Referrer\Get Referrer List.Outputs[OLE DB Source Output].Columns[FirstNm]" />
+                        <inputColumn
+                          refId="Package\Referrer\Process Referrer\Insert to temp table for batch update.Inputs[OLE DB Destination Input].Columns[LastNm]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="LastNm"
+                          externalMetadataColumnId="Package\Referrer\Process Referrer\Insert to temp table for batch update.Inputs[OLE DB Destination Input].ExternalColumns[LastNm]"
+                          lineageId="Package\Referrer\Process Referrer\Get Referrer List.Outputs[OLE DB Source Output].Columns[LastNm]" />
+                        <inputColumn
+                          refId="Package\Referrer\Process Referrer\Insert to temp table for batch update.Inputs[OLE DB Destination Input].Columns[CreateUserId]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="CreateUserId"
+                          externalMetadataColumnId="Package\Referrer\Process Referrer\Insert to temp table for batch update.Inputs[OLE DB Destination Input].ExternalColumns[CreateUserId]"
+                          lineageId="Package\Referrer\Process Referrer\Get Referrer List.Outputs[OLE DB Source Output].Columns[CreateUserId]" />
+                        <inputColumn
+                          refId="Package\Referrer\Process Referrer\Insert to temp table for batch update.Inputs[OLE DB Destination Input].Columns[CreateDttm]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="CreateDttm"
+                          externalMetadataColumnId="Package\Referrer\Process Referrer\Insert to temp table for batch update.Inputs[OLE DB Destination Input].ExternalColumns[CreateDttm]"
+                          lineageId="Package\Referrer\Process Referrer\Get Referrer List.Outputs[OLE DB Source Output].Columns[CreateDttm]" />
+                        <inputColumn
+                          refId="Package\Referrer\Process Referrer\Insert to temp table for batch update.Inputs[OLE DB Destination Input].Columns[UpdateUserId]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="UpdateUserId"
+                          externalMetadataColumnId="Package\Referrer\Process Referrer\Insert to temp table for batch update.Inputs[OLE DB Destination Input].ExternalColumns[UpdateUserId]"
+                          lineageId="Package\Referrer\Process Referrer\Get Referrer List.Outputs[OLE DB Source Output].Columns[UpdateUserId]" />
+                        <inputColumn
+                          refId="Package\Referrer\Process Referrer\Insert to temp table for batch update.Inputs[OLE DB Destination Input].Columns[UpdateDttm]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="UpdateDttm"
+                          externalMetadataColumnId="Package\Referrer\Process Referrer\Insert to temp table for batch update.Inputs[OLE DB Destination Input].ExternalColumns[UpdateDttm]"
+                          lineageId="Package\Referrer\Process Referrer\Get Referrer List.Outputs[OLE DB Source Output].Columns[UpdateDttm]" />
+                        <inputColumn
+                          refId="Package\Referrer\Process Referrer\Insert to temp table for batch update.Inputs[OLE DB Destination Input].Columns[EmployeeId]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="EmployeeId"
+                          externalMetadataColumnId="Package\Referrer\Process Referrer\Insert to temp table for batch update.Inputs[OLE DB Destination Input].ExternalColumns[EmployeeId]"
+                          lineageId="Package\Referrer\Process Referrer\Get Referrer List.Outputs[OLE DB Source Output].Columns[EmployeeId]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Referrer\Process Referrer\Insert to temp table for batch update.Inputs[OLE DB Destination Input].ExternalColumns[PeopleKey]"
+                          dataType="i4"
+                          name="PeopleKey" />
+                        <externalMetadataColumn
+                          refId="Package\Referrer\Process Referrer\Insert to temp table for batch update.Inputs[OLE DB Destination Input].ExternalColumns[EnterpriseId]"
+                          codePage="1252"
+                          dataType="str"
+                          length="100"
+                          name="EnterpriseId" />
+                        <externalMetadataColumn
+                          refId="Package\Referrer\Process Referrer\Insert to temp table for batch update.Inputs[OLE DB Destination Input].ExternalColumns[FirstNm]"
+                          dataType="wstr"
+                          length="255"
+                          name="FirstNm" />
+                        <externalMetadataColumn
+                          refId="Package\Referrer\Process Referrer\Insert to temp table for batch update.Inputs[OLE DB Destination Input].ExternalColumns[LastNm]"
+                          dataType="wstr"
+                          length="255"
+                          name="LastNm" />
+                        <externalMetadataColumn
+                          refId="Package\Referrer\Process Referrer\Insert to temp table for batch update.Inputs[OLE DB Destination Input].ExternalColumns[CreateUserId]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="CreateUserId" />
+                        <externalMetadataColumn
+                          refId="Package\Referrer\Process Referrer\Insert to temp table for batch update.Inputs[OLE DB Destination Input].ExternalColumns[CreateDttm]"
+                          dataType="dbTimeStamp"
+                          name="CreateDttm" />
+                        <externalMetadataColumn
+                          refId="Package\Referrer\Process Referrer\Insert to temp table for batch update.Inputs[OLE DB Destination Input].ExternalColumns[UpdateUserId]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="UpdateUserId" />
+                        <externalMetadataColumn
+                          refId="Package\Referrer\Process Referrer\Insert to temp table for batch update.Inputs[OLE DB Destination Input].ExternalColumns[UpdateDttm]"
+                          dataType="dbTimeStamp"
+                          name="UpdateDttm" />
+                        <externalMetadataColumn
+                          refId="Package\Referrer\Process Referrer\Insert to temp table for batch update.Inputs[OLE DB Destination Input].ExternalColumns[EmployeeId]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="EmployeeId" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Referrer\Process Referrer\Insert to temp table for batch update.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Referrer\Process Referrer\Insert to temp table for batch update.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Referrer\Process Referrer\Insert to temp table for batch update.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Referrer\Process Referrer\Insert to temp table for batch update.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Referrer\Process Referrer\Insert to temp table for batch update.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Referrer\Process Referrer\Insert to temp table for batch update.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Referrer\Process Referrer\Lookup"
+                  componentClassID="Microsoft.Lookup"
+                  contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+                  description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+                  name="Lookup"
+                  usesDispositions="true"
+                  version="6">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the SQL statement that generates the lookup table."
+                      expressionType="Notify"
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select PeopleKey
+                                            ,EmployeeId                                            ,EnterpriseId
+                                            ,FirstNm
+                                            ,LastNm
+                                            ,CreateUserId
+                                            ,CreateDttm
+                                            ,UpdateUserId
+                                            ,UpdateDttm from empref.Referrer with (Nolock)</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                      expressionType="Notify"
+                      name="SqlCommandParam"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select PeopleKey
+                                            ,EmployeeId                                            ,EnterpriseId
+                                            ,FirstNm
+                                            ,LastNm
+                                            ,CreateUserId
+                                            ,CreateDttm
+                                            ,UpdateUserId
+                                            ,UpdateDttm from empref.Referrer with (Nolock)) [refTable]
+where [refTable].[PeopleKey] = ?</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the type of connection used to access the reference dataset."
+                      name="ConnectionType"
+                      typeConverter="LookupConnectionType">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the cache type of the lookup table."
+                      name="CacheType"
+                      typeConverter="CacheType">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                      name="NoMatchBehavior"
+                      typeConverter="LookupNoMatchBehavior">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                      name="NoMatchCachePercentage">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                      name="MaxMemoryUsage">25</property>
+                    <property
+                      dataType="System.Int64"
+                      description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                      name="MaxMemoryUsage64">25</property>
+                    <property
+                      dataType="System.String"
+                      description="Indicates whether to reference metadata in an XML format."
+                      name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="PeopleKey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="EmployeeId" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="EnterpriseId" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="FirstNm" dataType="DT_WSTR" length="255" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="LastNm" dataType="DT_WSTR" length="255" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CreateUserId" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="CreateDttm" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="UpdateUserId" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="UpdateDttm" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                      name="ParameterMap">#{Package\Referrer\Process Referrer\Get Referrer List.Outputs[OLE DB Source Output].Columns[PeopleKey]};</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                      name="TreatDuplicateKeysAsError">false</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Referrer\Process Referrer\Lookup.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[3468_EmploRefer]"
+                      connectionManagerRefId="Package.ConnectionManagers[3468_EmploRefer]"
+                      description="Connection manager used to access lookup data."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Referrer\Process Referrer\Lookup.Inputs[Lookup Input]"
+                      name="Lookup Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Referrer\Process Referrer\Lookup.Inputs[Lookup Input].Columns[PeopleKey]"
+                          cachedDataType="i4"
+                          cachedName="PeopleKey"
+                          lineageId="Package\Referrer\Process Referrer\Get Referrer List.Outputs[OLE DB Source Output].Columns[PeopleKey]">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table that a column joins."
+                              name="JoinToReferenceColumn">PeopleKey</property>
+                            <property
+                              dataType="System.Null"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn" />
+                          </properties>
+                        </inputColumn>
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Referrer\Process Referrer\Lookup.Outputs[Lookup Match Output]"
+                      errorOrTruncationOperation="Lookup"
+                      errorRowDisposition="IgnoreFailure"
+                      exclusionGroup="1"
+                      name="Lookup Match Output"
+                      synchronousInputId="Package\Referrer\Process Referrer\Lookup.Inputs[Lookup Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Referrer\Process Referrer\Lookup.Outputs[Lookup Match Output].Columns[DestPeopleKey]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Copy Column"
+                          lineageId="Package\Referrer\Process Referrer\Lookup.Outputs[Lookup Match Output].Columns[DestPeopleKey]"
+                          name="DestPeopleKey"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn">PeopleKey</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Referrer\Process Referrer\Lookup.Outputs[Lookup No Match Output]"
+                      description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                      exclusionGroup="1"
+                      name="Lookup No Match Output"
+                      synchronousInputId="Package\Referrer\Process Referrer\Lookup.Inputs[Lookup Input]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Referrer\Process Referrer\Lookup.Outputs[Lookup Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Lookup Error Output"
+                      synchronousInputId="Package\Referrer\Process Referrer\Lookup.Inputs[Lookup Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Referrer\Process Referrer\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Referrer\Process Referrer\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Referrer\Process Referrer\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Referrer\Process Referrer\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Referrer\Process Referrer.Paths[Insert]"
+                  endId="Package\Referrer\Process Referrer\Insert to ER Table.Inputs[OLE DB Destination Input]"
+                  name="Insert"
+                  startId="Package\Referrer\Process Referrer\Conditional Split.Outputs[Insert]" />
+                <path
+                  refId="Package\Referrer\Process Referrer.Paths[Lookup Match Output]"
+                  endId="Package\Referrer\Process Referrer\Conditional Split.Inputs[Conditional Split Input]"
+                  name="Lookup Match Output"
+                  startId="Package\Referrer\Process Referrer\Lookup.Outputs[Lookup Match Output]" />
+                <path
+                  refId="Package\Referrer\Process Referrer.Paths[OLE DB Source Output]"
+                  endId="Package\Referrer\Process Referrer\Lookup.Inputs[Lookup Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\Referrer\Process Referrer\Get Referrer List.Outputs[OLE DB Source Output]" />
+                <path
+                  refId="Package\Referrer\Process Referrer.Paths[Update]"
+                  endId="Package\Referrer\Process Referrer\Insert to temp table for batch update.Inputs[OLE DB Destination Input]"
+                  name="Update"
+                  startId="Package\Referrer\Process Referrer\Conditional Split.Outputs[Update]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Referrer\Update Last Processing Date"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{7268D3F3-1A42-4EA9-8582-C5A9A28B01D6}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Update Last Processing Date"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{45AA4EE9-03CE-4A60-AE62-87D3883D61B9}"
+              SQLTask:SqlStatementSource="update a&#xA;&#xA;set a.decodetxt = DATEADD(DAY,-1,?)&#xA;from empref.codedetail a&#xA;join empref.codedetail b&#xA;on a.parentcodetxt = b.codetxt&#xA;and a.ParentCategoryNbr = b.CategoryNbr&#xA;join empref.codeheader c&#xA;on c.categorynbr = b.categorynbr&#xA;where &#xA;c.categorydesc = 'Last Processing Date'&#xA;and b.DecodeTxt = 'Referrer'" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::dtCurrent"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="7"
+                SQLTask:ParameterSize="0" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Referrer.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{A7B080B6-893C-4E7D-B279-F15A30621E11}"
+          DTS:From="Package\Referrer\Process Referrer"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Referrer\Perform Batch Update" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Referrer.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{A3FF7C6B-4603-4293-9B52-8220FEC830F4}"
+          DTS:From="Package\Referrer\Perform Batch Update"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\Referrer\Update Last Processing Date" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Send the Report"
+      DTS:CreationName="Microsoft.SendMailTask"
+      DTS:Description="Send Mail Task"
+      DTS:Disabled="True"
+      DTS:DTSID="{694C57D3-1135-4AE7-B41A-BE1C7FC4E765}"
+      DTS:ExecutableType="Microsoft.SendMailTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Send the Report"
+      DTS:TaskContact="Send Mail Task; Microsoft Corporation; Microsoft SQL Server 2008 R2; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SendMailTask:SendMailTaskData
+          SendMailTask:SMTPServer="{8D0CA448-1649-4551-968E-205C96F640CE}"
+          SendMailTask:From="your.email@accenture.com"
+          SendMailTask:To="3468_EmployeeReferral_Support@accenture.com"
+          SendMailTask:Subject="3468_SSIS_ODStoER Execution"
+          SendMailTask:MessageSource="3468_SSIS_ODStoER_REF.dtsx completed execution" xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Start Log Task"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{2E31C155-FD32-4B67-BF52-1E593F6501C5}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Start Log Task"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{0B86BBAD-FB79-4371-A29C-CD24CF95213B}"
+          SQLTask:BypassPrepare="False"
+          SQLTask:SqlStatementSource="exec admin.sp_ExecutionLog 'RUNNING',?,null,null,?,?,?,?,?,?,null,null,null,null" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="User::DateExecution"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="7"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="1"
+            SQLTask:DtsVariableName="System::VersionBuild"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="131"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="2"
+            SQLTask:DtsVariableName="System::VersionMajor"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="131"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="3"
+            SQLTask:DtsVariableName="System::VersionMinor"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="131"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="4"
+            SQLTask:DtsVariableName="System::PackageName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="129"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="5"
+            SQLTask:DtsVariableName="System::ExecutionInstanceGUID"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="129"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="6"
+            SQLTask:DtsVariableName="System::TaskID"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="129"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{A6400B4A-E9E9-43D8-B74F-F364F73A871D}"
+      DTS:From="Package\Get Last Processing Date"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Create Temp Tables" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{B85F2B06-9AE1-4590-B8F2-66FA6D5A6395}"
+      DTS:From="Package\Create Temp Tables"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Referrer" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 10]"
+      DTS:CreationName=""
+      DTS:DTSID="{07918D55-2B0F-4EB7-BE2F-2326C3506BE1}"
+      DTS:From="Package\Send the Report"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 10"
+      DTS:To="Package\End Log Task" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{92442880-F172-486D-8141-A374CBB0B099}"
+      DTS:From="Package\Referrer"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\Delete Temp Tables" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 7]"
+      DTS:CreationName=""
+      DTS:DTSID="{CB9ECB62-2BC3-4FAA-A779-C0E98B4B0F1C}"
+      DTS:From="Package\Delete Temp Tables"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 7"
+      DTS:To="Package\Send the Report" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 8]"
+      DTS:CreationName=""
+      DTS:DTSID="{C77DDC6C-8F09-4103-8388-42D583454F2A}"
+      DTS:From="Package\Get Processing Date"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 8"
+      DTS:To="Package\Start Log Task" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 9]"
+      DTS:CreationName=""
+      DTS:DTSID="{E5103B52-E071-4A1D-B7F9-79E816FEE336}"
+      DTS:From="Package\Start Log Task"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 9"
+      DTS:To="Package\Get Last Processing Date" />
+  </DTS:PrecedenceConstraints>
+  <DTS:EventHandlers>
+    <DTS:EventHandler
+      DTS:refId="Package.EventHandlers[OnError]"
+      DTS:CreationName="OnError"
+      DTS:DTSID="{D8C88FEA-84CC-4A77-A109-C05BCB2AAACD}"
+      DTS:EventID="676766964"
+      DTS:EventName="OnError"
+      DTS:LocaleID="-1">
+      <DTS:Variables>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:Description="The propagate property of the event"
+          DTS:DTSID="{E78BCA49-4A85-4640-A7EC-9686DAF08645}"
+          DTS:IncludeInDebugDump="6789"
+          DTS:Namespace="System"
+          DTS:ObjectName="Propagate">
+          <DTS:VariableValue
+            DTS:DataType="11">-1</DTS:VariableValue>
+        </DTS:Variable>
+      </DTS:Variables>
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package.EventHandlers[OnError]\Event Log Task"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{3958CC7A-5F6D-4445-8660-37F162F98CA4}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Event Log Task"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{0B86BBAD-FB79-4371-A29C-CD24CF95213B}"
+              SQLTask:SqlStatementSource="Exec  admin.SP_EventLog @PackageName=?, @ExecutionInstanceId=?, @ExecutionId=?, @ErrorCode=?, @ErrorDescription=?, @TaskName=?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="System::PackageName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="1"
+                SQLTask:DtsVariableName="System::ExecutionInstanceGUID"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="3"
+                SQLTask:DtsVariableName="System::ErrorCode"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="131"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="4"
+                SQLTask:DtsVariableName="System::ErrorDescription"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="5"
+                SQLTask:DtsVariableName="System::TaskName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="2"
+                SQLTask:DtsVariableName="System::PackageID"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package.EventHandlers[OnError]\SMTP Notify Error"
+          DTS:CreationName="Microsoft.SendMailTask"
+          DTS:Description="Send Mail Task"
+          DTS:DisableEventHandlers="True"
+          DTS:DTSID="{FE674B01-E0E1-4204-982A-1775454916B6}"
+          DTS:ExecutableType="Microsoft.SendMailTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SMTP Notify Error"
+          DTS:TaskContact="Send Mail Task; Microsoft Corporation; Microsoft SQL Server v9; © 2004 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:PropertyExpression
+            DTS:Name="MessageSource">"SSIS ERROR REPORT
+
+ 
+Execution Instance ID: " + (DT_WSTR, 255 ) @[System::ExecutionInstanceGUID] + "  
+Package: " +  (DT_WSTR, 255 ) @[System::PackageName] + " 
+Task: " +  (DT_WSTR, 255 ) @[System::SourceName] + "
+ErrorNumber: " + (DT_WSTR, 255 ) @[System::ErrorCode] + "
+ErrorMessage: " + (DT_WSTR, 2500 ) @[System::ErrorDescription]</DTS:PropertyExpression>
+          <DTS:PropertyExpression
+            DTS:Name="Subject">"SSIS ERROR IN: " + @[System::PackageName]</DTS:PropertyExpression>
+          <DTS:ObjectData>
+            <SendMailTask:SendMailTaskData
+              SendMailTask:SMTPServer="{8D0CA448-1649-4551-968E-205C96F640CE}"
+              SendMailTask:From="your.email@accenture.com"
+              SendMailTask:To="3468_EmployeeReferral_Support@accenture.com"
+              SendMailTask:Subject="SSIS ERROR IN: 3468_SSIS_ODStoER_REF"
+              SendMailTask:MessageSource="SSIS ERROR REPORT&#xA;&#xA; &#xA;Execution Instance ID: {B0D2710D-50B8-471A-99D7-FF12511D0991}  &#xA;Package: 3468_SSIS_ODStoER_REF &#xA;Task: &#xA;ErrorNumber: 0&#xA;ErrorMessage: " xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package.EventHandlers[OnError].PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{52B50D2E-893F-4494-BC53-99C1E17A3B2A}"
+          DTS:From="Package.EventHandlers[OnError]\Event Log Task"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package.EventHandlers[OnError]\SMTP Notify Error" />
+      </DTS:PrecedenceConstraints>
+    </DTS:EventHandler>
+  </DTS:EventHandlers>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="174.666666666667,42.6666666666667"
+          Id="Package\Create Temp Tables"
+          TopLeft="668.833333333333,518.166666666667" />
+        <NodeLayout
+          Size="173.333333333334,42"
+          Id="Package\Delete Temp Tables"
+          TopLeft="670.541666651145,1084.00873820945" />
+        <NodeLayout
+          Size="142,42"
+          Id="Package\End Log Task"
+          TopLeft="686.208333317812,1288.67540487611" />
+        <NodeLayout
+          Size="126,42"
+          Id="Package\Get Last Processing Date\Referrer"
+          TopLeft="5.5,5.5" />
+        <NodeLayout
+          Size="134,42"
+          Id="Package\Get Last Processing Date\Get Current Date"
+          TopLeft="192.5,5.5" />
+        <GroupLayout
+          Text="Group "
+          ParentId="Package\Get Last Processing Date"
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="332,102.666666666667"
+          Size="332,146"
+          Id="50160515-1122-4999-acdc-4af918c7c276"
+          TopLeft="5.50000000000003,5.5">
+          <GroupLayout.ChildrenIds>
+            <s:String>Package\Get Last Processing Date\Referrer</s:String>
+            <s:String>Package\Get Last Processing Date\Get Current Date</s:String>
+          </GroupLayout.ChildrenIds>
+        </GroupLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="342.666666666667,206.666666666667"
+          Size="342.666666666667,250"
+          Id="Package\Get Last Processing Date"
+          TopLeft="584.66665803641,217.482456290601" />
+        <NodeLayout
+          Size="174,42"
+          Id="Package\Get Processing Date"
+          TopLeft="669.166666666667,5.5" />
+        <NodeLayout
+          Size="182.666666666667,42"
+          Id="Package\Referrer\Perform Batch Update"
+          TopLeft="21.1666666666667,107.5" />
+        <NodeLayout
+          Size="156,42"
+          Id="Package\Referrer\Process Referrer"
+          TopLeft="34.5,5.5" />
+        <NodeLayout
+          Size="214,42"
+          Id="Package\Referrer\Update Last Processing Date"
+          TopLeft="5.50000000000003,209.5" />
+        <EdgeLayout
+          Id="Package\Referrer.PrecedenceConstraints[Constraint]"
+          TopLeft="112.5,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Referrer.PrecedenceConstraints[Constraint 1]"
+          TopLeft="112.5,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="225.333333333334,306.666666666667"
+          Size="225.333333333334,349.333333333334"
+          Id="Package\Referrer"
+          TopLeft="649.055555472771,651.213431539775" />
+        <NodeLayout
+          Size="156,42.6666666666667"
+          Id="Package\Send the Report"
+          TopLeft="679.208333317812,1185.32452767026" />
+        <NodeLayout
+          Size="146.666666666667,42"
+          Id="Package\Start Log Task"
+          TopLeft="682.833333333333,107.5" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="756.083329018205,467.482456290601">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,50.6842103760661"
+              Start="0,0"
+              End="0,43.1842103760661">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,43.1842103760661" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 10]"
+          TopLeft="757.208333317812,1227.99119433692">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60.6842105391979"
+              Start="0,0"
+              End="0,53.1842105391979">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,53.1842105391979" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 7]"
+          TopLeft="757.208333317812,1126.00873820945">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,59.3157894608057"
+              Start="0,0"
+              End="0,51.8157894608057">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,51.8157894608057" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 8]"
+          TopLeft="756.166666666667,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 9]"
+          TopLeft="756.083329018205,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,67.9824562906009"
+              Start="0,0"
+              End="0,60.4824562906009">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,60.4824562906009" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="758.944444403052,560.833333333334">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,90.3800982064409"
+              Start="0,0"
+              End="0,82.8800982064409">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,82.8800982064409" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="759.465277728625,1000.54676487311">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,83.4619733363379"
+              Start="0,0"
+              End="0,75.9619733363379">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,75.9619733363379" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <DtsEventHandler
+    design-time-name="Package.EventHandlers[OnError]">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="150.666666666667,42"
+          Id="Package.EventHandlers[OnError]\Event Log Task"
+          TopLeft="74.5,60" />
+        <NodeLayout
+          Size="136,44"
+          Id="Package.EventHandlers[OnError]\SMTP Notify Error"
+          TopLeft="60.8333333209157,150.066666674415" />
+        <EdgeLayout
+          Id="Package.EventHandlers[OnError].PrecedenceConstraints[Constraint]"
+          TopLeft="149.833333333333,102">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-21.0000000124176,48.0666666744153"
+              Start="0,0"
+              End="-21.0000000124176,40.5666666744153">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.0333333372076" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.0333333372076"
+                    Point2="0,24.0333333372076"
+                    Point3="-4,24.0333333372076" />
+                  <mssgle:LineSegment
+                    End="-17.0000000124176,24.0333333372076" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-17.0000000124176,24.0333333372076"
+                    Point2="-21.0000000124176,24.0333333372076"
+                    Point3="-21.0000000124176,28.0333333372076" />
+                  <mssgle:LineSegment
+                    End="-21.0000000124176,40.5666666744153" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </DtsEventHandler>
+  <TaskHost
+    design-time-name="Package\Referrer\Process Referrer">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="113.333333333334,42"
+          Id="Package\Referrer\Process Referrer\Lookup"
+          TopLeft="321,118.333333333333" />
+        <NodeLayout
+          Size="254.666666666667,42"
+          Id="Package\Referrer\Process Referrer\Insert to temp table for batch update"
+          TopLeft="473,291" />
+        <NodeLayout
+          Size="164,42"
+          Id="Package\Referrer\Process Referrer\Insert to ER Table"
+          TopLeft="56,295" />
+        <NodeLayout
+          Size="154.666666666667,42"
+          Id="Package\Referrer\Process Referrer\Conditional Split"
+          TopLeft="290,209.666666666667" />
+        <NodeLayout
+          Size="156,42"
+          Id="Package\Referrer\Process Referrer\Get Referrer List"
+          TopLeft="290,26" />
+        <EdgeLayout
+          Id="Package\Referrer\Process Referrer.Paths[OLE DB Source Output]"
+          TopLeft="368,68">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="9.66666666666669,50.3333333333333"
+              Start="0,0"
+              End="9.66666666666669,42.8333333333333">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21.1666666666667" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,21.1666666666667"
+                    Point2="0,25.1666666666667"
+                    Point3="4,25.1666666666667" />
+                  <mssgle:LineSegment
+                    End="5.66666666666669,25.1666666666667" />
+                  <mssgle:CubicBezierSegment
+                    Point1="5.66666666666669,25.1666666666667"
+                    Point2="9.66666666666669,25.1666666666667"
+                    Point3="9.66666666666669,29.1666666666667" />
+                  <mssgle:LineSegment
+                    End="9.66666666666669,42.8333333333333" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Referrer\Process Referrer.Paths[Lookup Match Output]"
+          TopLeft="377.666666666667,160.333333333333">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="-10.3333333333334,49.3333333333333"
+              Start="0,0"
+              End="-10.3333333333334,41.8333333333333">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.6666666666667" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.6666666666667"
+                    Point2="0,24.6666666666667"
+                    Point3="-4,24.6666666666667" />
+                  <mssgle:LineSegment
+                    End="-6.33333333333337,24.6666666666667" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-6.33333333333337,24.6666666666667"
+                    Point2="-10.3333333333334,24.6666666666667"
+                    Point3="-10.3333333333334,28.6666666666667" />
+                  <mssgle:LineSegment
+                    End="-10.3333333333334,41.8333333333333" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-53.3580533854167,29.6666666666667,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Referrer\Process Referrer.Paths[Insert]"
+          TopLeft="342.888888888889,251.666666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="-204.888888888889,43.3333333333333"
+              Start="0,0"
+              End="-204.888888888889,35.8333333333333">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,13.5995449374289" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,13.5995449374289"
+                    Point2="0,17.5995449374289"
+                    Point3="-4,17.5995449374289" />
+                  <mssgle:LineSegment
+                    End="-200.888888888889,17.5995449374289" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-200.888888888889,17.5995449374289"
+                    Point2="-204.888888888889,17.5995449374289"
+                    Point3="-204.888888888889,21.5995449374289" />
+                  <mssgle:LineSegment
+                    End="-204.888888888889,35.8333333333333" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-116.197432725694,22.5995449374289,27.5059765625,9.40234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Referrer\Process Referrer.Paths[Update]"
+          TopLeft="391.777777777778,251.666666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="208.555555555556,39.3333333333333"
+              Start="0,0"
+              End="208.555555555556,31.8333333333333">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,11.9749715585893" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,11.9749715585893"
+                    Point2="0,15.9749715585893"
+                    Point3="4,15.9749715585893" />
+                  <mssgle:LineSegment
+                    End="204.555555555556,15.9749715585893" />
+                  <mssgle:CubicBezierSegment
+                    Point1="204.555555555556,15.9749715585893"
+                    Point2="208.555555555556,15.9749715585893"
+                    Point3="208.555555555556,19.9749715585893" />
+                  <mssgle:LineSegment
+                    End="208.555555555556,31.8333333333333" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="87.9974848090278,20.9749715585893,32.5605859375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Referrer\Process Referrer\Lookup">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Referrer\Process Referrer\Insert to ER Table">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Referrer\Process Referrer\Get Referrer List">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Referrer\Process Referrer\Insert to temp table for batch update">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

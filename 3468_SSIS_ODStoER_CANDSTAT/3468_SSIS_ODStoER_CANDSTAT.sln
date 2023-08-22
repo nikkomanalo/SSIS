@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31605.320
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "3468_SSIS_ODStoER_CANDSTAT", "3468_SSIS_ODStoER_CANDSTAT\3468_SSIS_ODStoER_CANDSTAT.dtproj", "{04E19066-D635-4F95-A502-005F6A17485D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Development|Default = Development|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{04E19066-D635-4F95-A502-005F6A17485D}.Development|Default.ActiveCfg = Development
+		{04E19066-D635-4F95-A502-005F6A17485D}.Development|Default.Build.0 = Development
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DBD0FD00-541B-435E-AD4B-0CC842D59BEA}
+	EndGlobalSection
+EndGlobal
